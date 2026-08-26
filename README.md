@@ -69,6 +69,13 @@ DTSTART:20261119T123000Z        ← always UTC date-time
   must stay portable: explicit accent classes (`[ée]`, `[ôo]`), `\p{L}` boundaries,
   `\b` only next to ASCII letters. The sync worker catches `Throwable` for this reason.
 
+## Install
+
+Grab the signed APK from the [latest release](https://github.com/Androtim/Timetable/releases/latest)
+and open it on your phone. For automatic updates, add this repo to
+[Obtainium](https://github.com/ImranR98/Obtainium). F-Droid and Play Store
+listings are in progress.
+
 ## Building
 
 ```

@@ -1,0 +1,31 @@
+# Draft metadata for the F-Droid submission.
+#
+# To submit: fork https://gitlab.com/fdroid/fdroiddata (needs a GitLab account),
+# copy this file to metadata/com.androtim.timetable.yml, and open a merge request.
+# Docs: https://f-droid.org/docs/Submitting_to_F-Droid_Quick_Start_Guide/
+
+Categories:
+  - Time
+License: GPL-3.0-or-later
+AuthorName: Androtim
+SourceCode: https://github.com/Androtim/Timetable
+IssueTracker: https://github.com/Androtim/Timetable/issues
+
+AutoName: Timetable
+Summary: Offline school timetable with a smart home-screen widget
+
+RepoType: git
+Repo: https://github.com/Androtim/Timetable.git
+
+Builds:
+  - versionName: 1.0.0
+    versionCode: 1
+    commit: v1.0.0
+    subdir: app
+    gradle:
+      - yes
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: 1.0.0
+CurrentVersionCode: 1
