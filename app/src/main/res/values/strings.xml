@@ -81,6 +81,11 @@
     <string name="about_version">Version %1$s</string>
     <string name="about_privacy" formatted="false">100% on-device: no account, no ads, no tracking. The network is used only to download the calendar you configure — your schedule and notes never leave your phone.</string>
 
+    <string name="language_title">Language</string>
+    <string name="language_system">System default</string>
+
+    <string name="privacy_dialog_text">Timetable collects no personal data. No account, no analytics, no ads, no trackers.\n\nThe network is used for one thing only: downloading the calendar file from the URL you configured, directly from your device to your school\'s server.\n\nYour schedule, groups, notes and preferences are stored only on this device and are deleted when you uninstall the app. Since nothing is collected, nothing is ever shared or sold.\n\nThis app was built with AI assistance (Anthropic\'s Claude), but contains no AI features and sends nothing to any AI service.</string>
+
     <string name="theme_title">Theme</string>
     <string name="theme_auto">Automatic (follow system)</string>
     <string name="theme_light">Light</string>
@@ -88,4 +93,5 @@
     <string name="about_ai">Transparency: this app was built with the assistance of AI (Anthropic\'s Claude), reviewed and tested by a human. The app itself contains no AI features and sends nothing to any AI service.</string>
     <string name="about_source">Source code</string>
     <string name="about_privacy_link">Privacy policy</string>
+    <string name="about_feedback">Send feedback</string>
 </resources>

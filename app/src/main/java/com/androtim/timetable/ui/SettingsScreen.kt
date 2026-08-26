@@ -61,6 +61,10 @@ private val PICKER_COLORS = listOf(
     0xFF00695C, 0xFF2E7D32, 0xFF558B2F, 0xFF827717,
     0xFFEF6C00, 0xFFD84315, 0xFFAD1457, 0xFF6A1B9A,
     0xFF4527A0, 0xFF5D4037, 0xFF455A64, 0xFF37474F,
+    0xFF283593, 0xFF0D47A1, 0xFF01579B, 0xFF006064,
+    0xFF004D40, 0xFF1B5E20, 0xFF33691E, 0xFF3E2723,
+    0xFFE65100, 0xFFBF360C, 0xFF880E4F, 0xFF7B1FA2,
+    0xFF311B92, 0xFF6D4C41, 0xFF546E7A, 0xFF263238,
 ).map { it.toInt() }
 
 /** Multi-select group dropdown shown in the top bar. */
@@ -125,6 +129,8 @@ fun SettingsScreen(
     val courseColors by vm.courseColors.collectAsStateWithLifecycle()
     val manualColors by vm.manualColors.collectAsStateWithLifecycle()
     var pickingCourse by remember { mutableStateOf<String?>(null) }
+    var showPrivacy by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     Column(
         modifier
@@ -175,17 +181,41 @@ fun SettingsScreen(
 
         SectionDivider()
 
+        // ----- Language (per-app locales, Android 13+) -----
+        if (android.os.Build.VERSION.SDK_INT >= 33) {
+            val localeManager = remember {
+                context.getSystemService(android.app.LocaleManager::class.java)
+            }
+            val currentLang = localeManager.applicationLocales.toLanguageTags()
+                .substringBefore("-")
+            Text(stringResource(R.string.language_title), style = MaterialTheme.typography.titleMedium)
+            Spacer(Modifier.height(4.dp))
+            listOf(
+                "" to stringResource(R.string.language_system),
+                "en" to "English",
+                "fr" to "Français",
+                "es" to "Español",
+            ).forEach { (tag, label) ->
+                ColorModeOption(label, currentLang == tag) {
+                    localeManager.applicationLocales =
+                        if (tag.isEmpty()) android.os.LocaleList.getEmptyLocaleList()
+                        else android.os.LocaleList.forLanguageTags(tag)
+                }
+            }
+            SectionDivider()
+        }
+
         // ----- Theme -----
         val themeMode by vm.themeMode.collectAsStateWithLifecycle()
         Text(stringResource(R.string.theme_title), style = MaterialTheme.typography.titleMedium)
         Spacer(Modifier.height(4.dp))
-        ColorModeOption(R.string.theme_auto, themeMode == Settings.THEME_AUTO) {
+        ColorModeOption(stringResource(R.string.theme_auto), themeMode == Settings.THEME_AUTO) {
             vm.setThemeMode(Settings.THEME_AUTO)
         }
-        ColorModeOption(R.string.theme_light, themeMode == Settings.THEME_LIGHT) {
+        ColorModeOption(stringResource(R.string.theme_light), themeMode == Settings.THEME_LIGHT) {
             vm.setThemeMode(Settings.THEME_LIGHT)
         }
-        ColorModeOption(R.string.theme_dark, themeMode == Settings.THEME_DARK) {
+        ColorModeOption(stringResource(R.string.theme_dark), themeMode == Settings.THEME_DARK) {
             vm.setThemeMode(Settings.THEME_DARK)
         }
 
@@ -194,13 +224,13 @@ fun SettingsScreen(
         // ----- Course colors -----
         Text(stringResource(R.string.color_title), style = MaterialTheme.typography.titleMedium)
         Spacer(Modifier.height(4.dp))
-        ColorModeOption(R.string.color_mode_auto, colorMode == Settings.COLOR_MODE_AUTO) {
+        ColorModeOption(stringResource(R.string.color_mode_auto), colorMode == Settings.COLOR_MODE_AUTO) {
             vm.setColorMode(Settings.COLOR_MODE_AUTO)
         }
-        ColorModeOption(R.string.color_mode_single, colorMode == Settings.COLOR_MODE_SINGLE) {
+        ColorModeOption(stringResource(R.string.color_mode_single), colorMode == Settings.COLOR_MODE_SINGLE) {
             vm.setColorMode(Settings.COLOR_MODE_SINGLE)
         }
-        ColorModeOption(R.string.color_mode_manual, colorMode == Settings.COLOR_MODE_MANUAL) {
+        ColorModeOption(stringResource(R.string.color_mode_manual), colorMode == Settings.COLOR_MODE_MANUAL) {
             vm.setColorMode(Settings.COLOR_MODE_MANUAL)
         }
 
@@ -266,7 +296,6 @@ fun SettingsScreen(
         SectionDivider()
 
         // ----- About / transparency -----
-        val context = LocalContext.current
         val versionName = remember {
             runCatching {
                 context.packageManager.getPackageInfo(context.packageName, 0).versionName
@@ -289,20 +318,43 @@ fun SettingsScreen(
         )
         Spacer(Modifier.height(4.dp))
         Row {
-            TextButton(onClick = {
-                context.startActivity(
-                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Androtim/Timetable"))
-                )
-            }) { Text(stringResource(R.string.about_source)) }
+            TextButton(onClick = { showPrivacy = true }) {
+                Text(stringResource(R.string.about_privacy_link))
+            }
             TextButton(onClick = {
                 context.startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://github.com/Androtim/Timetable/blob/main/PRIVACY.md")
+                        Uri.parse("https://github.com/Androtim/Timetable/issues")
                     )
                 )
-            }) { Text(stringResource(R.string.about_privacy_link)) }
+            }) { Text(stringResource(R.string.about_feedback)) }
         }
+        TextButton(onClick = {
+            context.startActivity(
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Androtim/Timetable"))
+            )
+        }) { Text(stringResource(R.string.about_source)) }
+    }
+
+    if (showPrivacy) {
+        AlertDialog(
+            onDismissRequest = { showPrivacy = false },
+            title = { Text(stringResource(R.string.about_privacy_link)) },
+            text = {
+                Column(Modifier.verticalScroll(rememberScrollState())) {
+                    Text(
+                        stringResource(R.string.privacy_dialog_text),
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showPrivacy = false }) {
+                    Text(stringResource(R.string.close))
+                }
+            },
+        )
     }
 
     pickingCourse?.let { courseKey ->
@@ -346,7 +398,7 @@ private fun SectionDivider() {
 }
 
 @Composable
-private fun ColorModeOption(labelRes: Int, selected: Boolean, onClick: () -> Unit) {
+private fun ColorModeOption(label: String, selected: Boolean, onClick: () -> Unit) {
     Row(
         Modifier
             .fillMaxWidth()
@@ -355,7 +407,7 @@ private fun ColorModeOption(labelRes: Int, selected: Boolean, onClick: () -> Uni
         verticalAlignment = Alignment.CenterVertically,
     ) {
         RadioButton(selected = selected, onClick = onClick)
-        Text(stringResource(labelRes), style = MaterialTheme.typography.bodyMedium)
+        Text(label, style = MaterialTheme.typography.bodyMedium)
     }
 }
 

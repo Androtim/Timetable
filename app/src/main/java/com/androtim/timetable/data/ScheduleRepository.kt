@@ -60,9 +60,14 @@ class ScheduleRepository(context: Context) {
     suspend fun hasData(): Boolean = dao.count() > 0
 
     /** Distinct course keys (code, or full name when uncoded), sorted for stable color assignment. */
-    fun observeCourseKeys(): Flow<List<String>> =
+    fun observeCourseKeys(): Flow<List<com.androtim.timetable.data.model.CourseKey>> =
         dao.observeAll().map { list ->
-            list.map { it.courseCode ?: it.courseName }.distinct().sorted()
+            list.map {
+                com.androtim.timetable.data.model.CourseKey(
+                    key = it.courseCode ?: it.courseName,
+                    hasCode = it.courseCode != null,
+                )
+            }.distinct().sortedBy { it.key }
         }
 
     /**

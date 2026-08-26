@@ -81,6 +81,11 @@
     <string name="about_version">Versión %1$s</string>
     <string name="about_privacy" formatted="false">100% en el dispositivo: sin cuenta, sin anuncios, sin rastreo. La red solo se usa para descargar el calendario que configures — tu horario y tus notas nunca salen de tu teléfono.</string>
 
+    <string name="language_title">Idioma</string>
+    <string name="language_system">Idioma del sistema</string>
+
+    <string name="privacy_dialog_text">Timetable no recopila ningún dato personal. Sin cuenta, sin estadísticas, sin anuncios, sin rastreadores.\n\nLa red se usa para una sola cosa: descargar el archivo de calendario desde la URL que configuraste, directamente de tu dispositivo al servidor de tu escuela.\n\nTu horario, tus grupos, tus notas y tus preferencias se guardan solo en este dispositivo y se eliminan al desinstalar la app. Como no se recopila nada, nunca se comparte ni se vende nada.\n\nEsta app se desarrolló con ayuda de una IA (Claude de Anthropic), pero no contiene funciones de IA y no envía nada a ningún servicio de IA.</string>
+
     <string name="theme_title">Tema</string>
     <string name="theme_auto">Automático (seguir el sistema)</string>
     <string name="theme_light">Claro</string>
@@ -88,4 +93,5 @@
     <string name="about_ai">Transparencia: esta aplicación se desarrolló con la ayuda de una IA (Claude de Anthropic), revisada y probada por un humano. La app en sí no contiene funciones de IA y no envía nada a ningún servicio de IA.</string>
     <string name="about_source">Código fuente</string>
     <string name="about_privacy_link">Política de privacidad</string>
+    <string name="about_feedback">Enviar comentarios</string>
 </resources>

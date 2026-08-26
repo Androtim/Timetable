@@ -81,6 +81,11 @@
     <string name="about_version">Version %1$s</string>
     <string name="about_privacy" formatted="false">100% sur l\'appareil : pas de compte, pas de pub, pas de pistage. Le réseau ne sert qu\'à télécharger le calendrier que vous configurez — votre emploi du temps et vos notes ne quittent jamais votre téléphone.</string>
 
+    <string name="language_title">Langue</string>
+    <string name="language_system">Langue du système</string>
+
+    <string name="privacy_dialog_text">Timetable ne collecte aucune donnée personnelle. Pas de compte, pas de statistiques, pas de pub, pas de traqueurs.\n\nLe réseau ne sert qu\'à une seule chose : télécharger le fichier calendrier depuis l\'URL que vous avez configurée, directement de votre appareil vers le serveur de votre école.\n\nVotre emploi du temps, vos groupes, vos notes et vos préférences sont stockés uniquement sur cet appareil et supprimés quand vous désinstallez l\'appli. Comme rien n\'est collecté, rien n\'est jamais partagé ni vendu.\n\nCette appli a été développée avec l\'aide d\'une IA (Claude d\'Anthropic), mais ne contient aucune fonction d\'IA et n\'envoie rien à aucun service d\'IA.</string>
+
     <string name="theme_title">Thème</string>
     <string name="theme_auto">Automatique (suivre le système)</string>
     <string name="theme_light">Clair</string>
@@ -88,4 +93,5 @@
     <string name="about_ai">Transparence : cette application a été développée avec l\'aide d\'une IA (Claude d\'Anthropic), relue et testée par un humain. L\'application elle-même ne contient aucune fonction d\'IA et n\'envoie rien à aucun service d\'IA.</string>
     <string name="about_source">Code source</string>
     <string name="about_privacy_link">Politique de confidentialité</string>
+    <string name="about_feedback">Envoyer un retour</string>
 </resources>

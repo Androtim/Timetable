@@ -27,6 +27,9 @@ enum class CourseType { CM, TD, TP, OTHER }
 /** A group tag found in the feed, with how many events carry it. */
 data class GroupToken(val token: String, val count: Int)
 
+/** A distinct course key, and whether it comes from a real course code. */
+data class CourseKey(val key: String, val hasCode: Boolean)
+
 /** One parsed VEVENT from the ADE feed. */
 data class ScheduleEvent(
     val uid: String,

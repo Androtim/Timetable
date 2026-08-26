@@ -149,23 +149,33 @@ class TimetableViewModel(app: Application) : AndroidViewModel(app) {
 
     /**
      * One color per course key according to the selected mode:
-     *  - auto: hues spread evenly around the color wheel over the number of courses
+     *  - auto: real (coded) courses get hues spread evenly around the color wheel;
+     *    uncoded events (holidays, "Ferié", meetings) all share one neutral color
+     *    so they don't eat hues away from actual courses
      *  - single: the same user-chosen color for everything
      *  - manual: auto colors overridden by explicit per-course picks
      */
     val courseColors: StateFlow<Map<String, Color>> = combine(
         repo.observeCourseKeys(), _colorMode, _singleColor, _manualColors,
     ) { keys, mode, single, manual ->
-        val n = keys.size.coerceAtLeast(1)
-        val auto = keys.mapIndexed { i, key ->
-            key to Color.hsv(i * 360f / n, 0.62f, 0.72f)
-        }.toMap()
+        val coded = keys.filter { it.hasCode }.map { it.key }
+        val n = coded.size.coerceAtLeast(1)
+        val auto = buildMap {
+            coded.forEachIndexed { i, key ->
+                put(key, Color.hsv(i * 360f / n, 0.62f, 0.72f))
+            }
+            keys.filter { !it.hasCode }.forEach { put(it.key, UNCODED_EVENT_COLOR) }
+        }
         when (mode) {
-            Settings.COLOR_MODE_SINGLE -> keys.associateWith { Color(single) }
+            Settings.COLOR_MODE_SINGLE -> keys.associate { it.key to Color(single) }
             Settings.COLOR_MODE_MANUAL -> auto + manual.mapValues { Color(it.value) }
             else -> auto
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
+
+    private companion object {
+        val UNCODED_EVENT_COLOR = Color(0xFF546E7A)
+    }
 
     // ---------- Events & notes ----------
 
