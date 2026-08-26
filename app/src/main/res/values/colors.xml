@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="widget_background">#EE121212</color>
+    <color name="widget_card">#FF1F2430</color>
+    <color name="widget_card_exam">#FFC62828</color>
+    <color name="widget_text_primary">#FFFFFFFF</color>
+    <color name="widget_text_secondary">#FFB8C0CC</color>
+    <color name="badge_tp">#FF1E88E5</color>
+    <color name="badge_td">#FF43A047</color>
+    <color name="badge_cm">#FF8E24AA</color>
+    <color name="ic_launcher_background">#FF101728</color>
+</resources>

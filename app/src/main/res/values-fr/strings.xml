@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Emploi du temps</string>
+    <string name="widget_label">Emploi du temps (3×2)</string>
+    <string name="widget_prev_day">Jour précédent</string>
+    <string name="widget_next_day">Jour suivant</string>
+    <string name="widget_no_classes">Pas de cours 🎉</string>
+    <string name="widget_no_data">Pas encore de données — ouvrez l\'appli pour synchroniser</string>
+
+    <string name="settings">Paramètres</string>
+    <string name="back">Retour</string>
+    <string name="toggle_view">Basculer vue jour/semaine</string>
+    <string name="change_group">Changer de groupe</string>
+    <string name="previous_day">Jour précédent</string>
+    <string name="next_day">Jour suivant</string>
+    <string name="previous_week">Semaine précédente</string>
+    <string name="next_week">Semaine suivante</string>
+    <string name="day_note_button">Note du jour</string>
+    <string name="no_classes">Pas de cours 🎉</string>
+    <string name="exam">EXAMEN</string>
+    <string name="legend_exam">Examen</string>
+    <string name="open_day_view">Ouvrir la vue jour →</string>
+    <string name="note">Note</string>
+    <string name="note_placeholder">ex. présentation à rendre, apporter le PC…</string>
+    <string name="day_note_label">Note pour toute la journée</string>
+    <string name="day_note_placeholder">ex. affaires de sport, deadline aujourd\'hui…</string>
+    <string name="save">Enregistrer</string>
+    <string name="close">Fermer</string>
+    <string name="room_label">Salle : %1$s</string>
+    <string name="teacher_label">Enseignant : %1$s</string>
+    <string name="groups_label">Groupes : %1$s</string>
+
+    <string name="widget_group_title">Groupes affichés dans le widget</string>
+    <string name="widget_group_desc">Le widget de l\'écran d\'accueil reste verrouillé sur ces groupes, indépendamment du filtre utilisé dans l\'appli.</string>
+    <string name="sync_title">Synchronisation</string>
+    <string name="refresh_now">Actualiser</string>
+    <string name="refreshing">Actualisation…</string>
+    <string name="last_sync_never">Dernière synchro : jamais</string>
+    <string name="last_sync">Dernière synchro : %1$s</string>
+    <string name="auto_sync_hint">L\'emploi du temps se synchronise automatiquement toutes les 3 heures quand une connexion réseau est disponible.</string>
+
+    <string name="widget_settings">Paramètres du widget</string>
+    <string name="bg_opacity">Opacité du fond</string>
+    <string name="opacity_opaque">Opaque</string>
+    <string name="opacity_standard">Standard</string>
+    <string name="opacity_semi">Semi-transparent</string>
+    <string name="opacity_very">Très transparent</string>
+    <string name="opacity_full">Entièrement transparent</string>
+    <string name="text_size">Taille du texte</string>
+    <string name="size_small">Petite</string>
+    <string name="size_medium">Moyenne</string>
+    <string name="size_large">Grande</string>
+    <string name="card_color">Couleur des cartes de cours</string>
+    <string name="card_color_hint">Les examens restent toujours en rouge pour bien ressortir.</string>
+    <string name="color_slate">Ardoise</string>
+    <string name="color_charcoal">Anthracite</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_teal">Bleu canard</string>
+    <string name="color_purple">Violet</string>
+    <string name="done">Terminé</string>
+
+    <string name="setup_title">Configurer votre emploi du temps</string>
+    <string name="setup_intro">Collez le lien iCal (.ics) de votre emploi du temps. Pour les portails ADE, c\'est le lien d\'export \"anonymous_cal\".</string>
+    <string name="setup_url_label">URL du calendrier</string>
+    <string name="setup_load">Charger le calendrier</string>
+    <string name="setup_loading">Téléchargement du calendrier… cela peut prendre quelques minutes si le serveur de l\'école est lent.</string>
+    <string name="setup_pick_groups">Sélectionnez vos groupes</string>
+    <string name="setup_groups_hint">Cochez chaque étiquette qui vous concerne — en général votre sous-groupe, votre groupe de classe et votre année. Le nombre indique combien d\'événements portent cette étiquette : celles avec très peu d\'événements ne sont généralement pas de vrais groupes. Ne rien sélectionner affiche tout.</string>
+    <string name="all_groups">Tous les groupes</string>
+    <string name="groups_selected">%1$d groupes</string>
+    <string name="calendar_title">Calendrier</string>
+    <string name="change_calendar">Changer l\'URL du calendrier</string>
+    <string name="color_title">Couleurs des cours</string>
+    <string name="color_mode_auto">Automatique — une couleur distincte par cours</string>
+    <string name="color_mode_single">Une seule couleur pour tous les cours</string>
+    <string name="color_mode_manual">Manuel — choisir une couleur par cours</string>
+    <string name="pick_color">Choisir une couleur</string>
+    <string name="reset_color">Rétablir l\'automatique</string>
+</resources>

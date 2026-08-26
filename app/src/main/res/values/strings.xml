@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Timetable</string>
+    <string name="widget_label">Timetable (3×2)</string>
+    <string name="widget_prev_day">Previous day</string>
+    <string name="widget_next_day">Next day</string>
+    <string name="widget_no_classes">No classes 🎉</string>
+    <string name="widget_no_data">No data yet — open the app to sync</string>
+
+    <string name="settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="toggle_view">Toggle day/week view</string>
+    <string name="change_group">Change group</string>
+    <string name="previous_day">Previous day</string>
+    <string name="next_day">Next day</string>
+    <string name="previous_week">Previous week</string>
+    <string name="next_week">Next week</string>
+    <string name="day_note_button">Note for the day</string>
+    <string name="no_classes">No classes 🎉</string>
+    <string name="exam">EXAM</string>
+    <string name="legend_exam">Exam</string>
+    <string name="open_day_view">Open day view →</string>
+    <string name="note">Note</string>
+    <string name="note_placeholder">e.g. presentation due, bring laptop…</string>
+    <string name="day_note_label">Note for the whole day</string>
+    <string name="day_note_placeholder">e.g. bring sports gear, deadline today…</string>
+    <string name="save">Save</string>
+    <string name="close">Close</string>
+    <string name="room_label">Room: %1$s</string>
+    <string name="teacher_label">Teacher: %1$s</string>
+    <string name="groups_label">Groups: %1$s</string>
+
+    <string name="widget_group_title">Groups to show in widget</string>
+    <string name="widget_group_desc">The home-screen widget stays locked to these groups, independent of the filter used inside the app.</string>
+    <string name="sync_title">Synchronization</string>
+    <string name="refresh_now">Refresh Now</string>
+    <string name="refreshing">Refreshing…</string>
+    <string name="last_sync_never">Last sync: never</string>
+    <string name="last_sync">Last sync: %1$s</string>
+    <string name="auto_sync_hint">Schedule syncs automatically every 3 hours when a network connection is available.</string>
+
+    <string name="widget_settings">Widget settings</string>
+    <string name="bg_opacity">Background opacity</string>
+    <string name="opacity_opaque">Opaque</string>
+    <string name="opacity_standard">Standard</string>
+    <string name="opacity_semi">Semi-transparent</string>
+    <string name="opacity_very">Very transparent</string>
+    <string name="opacity_full">Fully transparent</string>
+    <string name="text_size">Text size</string>
+    <string name="size_small">Small</string>
+    <string name="size_medium">Medium</string>
+    <string name="size_large">Large</string>
+    <string name="card_color">Course card color</string>
+    <string name="card_color_hint">Exams always stay red so they stand out.</string>
+    <string name="color_slate">Slate</string>
+    <string name="color_charcoal">Charcoal</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_purple">Purple</string>
+    <string name="done">Done</string>
+
+    <string name="setup_title">Set up your timetable</string>
+    <string name="setup_intro">Paste the iCal (.ics) link of your school timetable. For ADE portals this is the \"anonymous_cal\" export link.</string>
+    <string name="setup_url_label">Calendar URL</string>
+    <string name="setup_load">Load calendar</string>
+    <string name="setup_loading">Downloading calendar… this can take a few minutes on slow school servers.</string>
+    <string name="setup_pick_groups">Select your groups</string>
+    <string name="setup_groups_hint">Check every tag that applies to you — typically your small group, your class group and your year. The number is how many events carry that tag: tags with only a few events are usually not real groups. Select nothing to see everything.</string>
+    <string name="all_groups">All groups</string>
+    <string name="groups_selected">%1$d groups</string>
+    <string name="calendar_title">Calendar</string>
+    <string name="change_calendar">Change calendar URL</string>
+    <string name="color_title">Course colors</string>
+    <string name="color_mode_auto">Automatic — one distinct color per course</string>
+    <string name="color_mode_single">Single color for all courses</string>
+    <string name="color_mode_manual">Manual — pick a color per course</string>
+    <string name="pick_color">Pick a color</string>
+    <string name="reset_color">Reset to automatic</string>
+</resources>

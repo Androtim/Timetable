@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Horario</string>
+    <string name="widget_label">Horario (3×2)</string>
+    <string name="widget_prev_day">Día anterior</string>
+    <string name="widget_next_day">Día siguiente</string>
+    <string name="widget_no_classes">Sin clases 🎉</string>
+    <string name="widget_no_data">Aún no hay datos — abre la app para sincronizar</string>
+
+    <string name="settings">Ajustes</string>
+    <string name="back">Atrás</string>
+    <string name="toggle_view">Cambiar vista día/semana</string>
+    <string name="change_group">Cambiar de grupo</string>
+    <string name="previous_day">Día anterior</string>
+    <string name="next_day">Día siguiente</string>
+    <string name="previous_week">Semana anterior</string>
+    <string name="next_week">Semana siguiente</string>
+    <string name="day_note_button">Nota del día</string>
+    <string name="no_classes">Sin clases 🎉</string>
+    <string name="exam">EXAMEN</string>
+    <string name="legend_exam">Examen</string>
+    <string name="open_day_view">Abrir vista de día →</string>
+    <string name="note">Nota</string>
+    <string name="note_placeholder">ej. entrega de presentación, llevar portátil…</string>
+    <string name="day_note_label">Nota para todo el día</string>
+    <string name="day_note_placeholder">ej. ropa de deporte, entrega hoy…</string>
+    <string name="save">Guardar</string>
+    <string name="close">Cerrar</string>
+    <string name="room_label">Aula: %1$s</string>
+    <string name="teacher_label">Docente: %1$s</string>
+    <string name="groups_label">Grupos: %1$s</string>
+
+    <string name="widget_group_title">Grupos mostrados en el widget</string>
+    <string name="widget_group_desc">El widget de la pantalla de inicio queda fijado a estos grupos, independientemente del filtro usado dentro de la app.</string>
+    <string name="sync_title">Sincronización</string>
+    <string name="refresh_now">Actualizar ahora</string>
+    <string name="refreshing">Actualizando…</string>
+    <string name="last_sync_never">Última sincronización: nunca</string>
+    <string name="last_sync">Última sincronización: %1$s</string>
+    <string name="auto_sync_hint">El horario se sincroniza automáticamente cada 3 horas cuando hay conexión de red.</string>
+
+    <string name="widget_settings">Ajustes del widget</string>
+    <string name="bg_opacity">Opacidad del fondo</string>
+    <string name="opacity_opaque">Opaco</string>
+    <string name="opacity_standard">Estándar</string>
+    <string name="opacity_semi">Semitransparente</string>
+    <string name="opacity_very">Muy transparente</string>
+    <string name="opacity_full">Totalmente transparente</string>
+    <string name="text_size">Tamaño del texto</string>
+    <string name="size_small">Pequeño</string>
+    <string name="size_medium">Mediano</string>
+    <string name="size_large">Grande</string>
+    <string name="card_color">Color de las tarjetas de curso</string>
+    <string name="card_color_hint">Los exámenes siempre quedan en rojo para destacar.</string>
+    <string name="color_slate">Pizarra</string>
+    <string name="color_charcoal">Carbón</string>
+    <string name="color_indigo">Índigo</string>
+    <string name="color_teal">Verde azulado</string>
+    <string name="color_purple">Morado</string>
+    <string name="done">Hecho</string>
+
+    <string name="setup_title">Configura tu horario</string>
+    <string name="setup_intro">Pega el enlace iCal (.ics) de tu horario escolar. En los portales ADE es el enlace de exportación \"anonymous_cal\".</string>
+    <string name="setup_url_label">URL del calendario</string>
+    <string name="setup_load">Cargar calendario</string>
+    <string name="setup_loading">Descargando calendario… puede tardar unos minutos si el servidor de la escuela va lento.</string>
+    <string name="setup_pick_groups">Selecciona tus grupos</string>
+    <string name="setup_groups_hint">Marca cada etiqueta que te corresponda — normalmente tu subgrupo, tu grupo de clase y tu año. El número indica cuántos eventos llevan esa etiqueta: las que tienen muy pocos eventos no suelen ser grupos reales. No seleccionar nada muestra todo.</string>
+    <string name="all_groups">Todos los grupos</string>
+    <string name="groups_selected">%1$d grupos</string>
+    <string name="calendar_title">Calendario</string>
+    <string name="change_calendar">Cambiar URL del calendario</string>
+    <string name="color_title">Colores de los cursos</string>
+    <string name="color_mode_auto">Automático — un color distinto por curso</string>
+    <string name="color_mode_single">Un solo color para todos los cursos</string>
+    <string name="color_mode_manual">Manual — elegir un color por curso</string>
+    <string name="pick_color">Elegir un color</string>
+    <string name="reset_color">Restablecer automático</string>
+</resources>
