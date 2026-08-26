@@ -1,0 +1,1 @@
+First release: iCal import with group auto-detection, offline cache, day/week views, responsive widget, notes, course colors, en/fr/es.

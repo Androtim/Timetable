@@ -1,0 +1,17 @@
+Marre du portail d'emploi du temps trop lent de votre fac ? Timetable télécharge le flux iCal (.ics) de votre école, met toute l'année en cache sur votre appareil et affiche votre emploi du temps instantanément — même sans connexion.
+
+Fonctionnalités :
+
+• Importez n'importe quel lien iCal/ADE — collez-le une fois au premier lancement
+• Détection automatique des groupes : l'appli trouve les étiquettes de groupe du flux et vous laisse filtrer sur les vôtres
+• Vue semaine en vraie grille horaire (échelle des heures, blocs proportionnels) et vue jour détaillée
+• Widget d'écran d'accueil adaptatif : jour en petit format, semaine complète en grand, avec navigation intégrée et personnalisation par widget (opacité, taille du texte, couleur des cartes)
+• Examens surlignés en rouge pour ne jamais les rater
+• Notes sur un cours ou une journée — visibles dans l'appli et le widget
+• Une couleur stable par cours (modes automatique, couleur unique ou manuel)
+• Synchronisation en arrière-plan toutes les 3 heures ; 100 % hors ligne entre-temps
+• Pas de compte, pas de pub, pas de pistage — vos données ne quittent jamais votre appareil
+
+Transparence : cette application a été développée avec l'aide d'une IA (Claude d'Anthropic), relue et testée par un humain. L'application elle-même ne contient aucune fonction d'IA et n'envoie rien à aucun service d'IA — tout reste sur votre appareil. Politique de confidentialité : https://github.com/Androtim/Timetable/blob/main/PRIVACY.md
+
+Libre et open source (GPLv3) : https://github.com/Androtim/Timetable

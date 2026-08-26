@@ -76,4 +76,11 @@
     <string name="color_mode_manual">Manual — elegir un color por curso</string>
     <string name="pick_color">Elegir un color</string>
     <string name="reset_color">Restablecer automático</string>
+
+    <string name="about_title">Acerca de</string>
+    <string name="about_version">Versión %1$s</string>
+    <string name="about_privacy">100%% en el dispositivo: sin cuenta, sin anuncios, sin rastreo. La red solo se usa para descargar el calendario que configures — tu horario y tus notas nunca salen de tu teléfono.</string>
+    <string name="about_ai">Transparencia: esta aplicación se desarrolló con la ayuda de una IA (Claude de Anthropic), revisada y probada por un humano. La app en sí no contiene funciones de IA y no envía nada a ningún servicio de IA.</string>
+    <string name="about_source">Código fuente</string>
+    <string name="about_privacy_link">Política de privacidad</string>
 </resources>

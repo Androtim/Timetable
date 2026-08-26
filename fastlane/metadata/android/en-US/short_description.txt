@@ -1,0 +1,1 @@
+Offline school timetable with a smart home-screen widget. Import any iCal feed.

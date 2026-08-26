@@ -80,6 +80,14 @@ Requirements: JDK 17+ and Android SDK platform 34 (`local.properties` points to 
 The parser unit tests use `app/src/test/resources/amu_feed_sample.ics`, a snapshot of the
 real feed taken on 2026-08-26 (443 events).
 
+## Transparency: AI-assisted development
+
+This app was built with the assistance of AI (Anthropic's Claude), with a human
+directing, reviewing and testing every feature on a real device. **The app itself
+contains no AI features**: it is a plain offline calendar viewer. It has no
+analytics, no ads, no accounts, and sends nothing to any AI service or any server
+other than the calendar URL you configure. See [PRIVACY.md](PRIVACY.md).
+
 ## License
 
 GPLv3 — see [LICENSE](LICENSE).

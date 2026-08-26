@@ -76,4 +76,11 @@
     <string name="color_mode_manual">Manual — pick a color per course</string>
     <string name="pick_color">Pick a color</string>
     <string name="reset_color">Reset to automatic</string>
+
+    <string name="about_title">About</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_privacy">100%% on-device: no account, no ads, no tracking. The network is used only to download the calendar you configure — your schedule and notes never leave your phone.</string>
+    <string name="about_ai">Transparency: this app was built with the assistance of AI (Anthropic\'s Claude), reviewed and tested by a human. The app itself contains no AI features and sends nothing to any AI service.</string>
+    <string name="about_source">Source code</string>
+    <string name="about_privacy_link">Privacy policy</string>
 </resources>

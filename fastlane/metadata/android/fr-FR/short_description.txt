@@ -1,0 +1,1 @@
+Emploi du temps hors ligne avec widget intelligent. Importez n'importe quel flux iCal.

@@ -1,0 +1,17 @@
+Tired of your university's slow timetable portal? Timetable downloads your school's iCal (.ics) feed once, caches the whole year on your device, and shows your schedule instantly — even with no connection.
+
+Features:
+
+• Import any iCal/ADE calendar link — paste it once at first launch
+• Automatic group detection: the app finds the group tags in your feed and lets you filter to exactly your groups
+• Week view as a real time grid (hour scale, proportional blocks) and a detailed day view
+• Size-responsive home-screen widget: compact day layout when small, full week grid when large, with in-widget navigation and per-widget customization (opacity, text size, card color)
+• Exams highlighted in red so you never miss them
+• Notes on any class or any day — they show up in the app and the widget
+• One stable color per course (automatic, single-color, or manual modes)
+• Syncs in the background every 3 hours; works fully offline in between
+• No account, no ads, no tracking — your data never leaves your device
+
+Transparency: this app was developed with the assistance of AI (Anthropic's Claude), reviewed and tested by a human. The app itself contains no AI features and sends nothing to any AI service — everything stays on your device. Privacy policy: https://github.com/Androtim/Timetable/blob/main/PRIVACY.md
+
+Free and open source (GPLv3): https://github.com/Androtim/Timetable
