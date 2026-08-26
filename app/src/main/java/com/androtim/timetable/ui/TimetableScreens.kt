@@ -327,7 +327,7 @@ fun EventCard(
             Column(Modifier.padding(start = 12.dp).weight(1f)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     if (!isExam && event.type != CourseType.OTHER) {
-                        TypeBadge(event.type)
+                        TypeBadge(event.type, event.typeLabel)
                     }
                     if (isExam) {
                         Text(
@@ -386,7 +386,7 @@ private fun contentColorFor(isExam: Boolean): Color =
     if (isExam) Color.White else MaterialTheme.colorScheme.onSurfaceVariant
 
 @Composable
-private fun TypeBadge(type: CourseType, small: Boolean = false) {
+private fun TypeBadge(type: CourseType, label: String? = null, small: Boolean = false) {
     val color = when (type) {
         CourseType.TP -> BadgeTp
         CourseType.TD -> BadgeTd
@@ -394,7 +394,7 @@ private fun TypeBadge(type: CourseType, small: Boolean = false) {
         CourseType.OTHER -> MaterialTheme.colorScheme.outline
     }
     Text(
-        type.name,
+        label ?: type.name,
         color = Color.White,
         fontSize = if (small) 9.sp else 11.sp,
         fontWeight = FontWeight.Bold,
@@ -858,7 +858,7 @@ fun EventDetailDialog(
                         )
                     } else if (event.type != CourseType.OTHER) {
                         Text(
-                            event.type.name,
+                            event.typeLabel ?: event.type.name,
                             color = Color.White,
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,

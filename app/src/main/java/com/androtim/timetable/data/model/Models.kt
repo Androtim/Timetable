@@ -33,7 +33,10 @@ data class ScheduleEvent(
     val rawSummary: String,
     val courseCode: String?,   // e.g. "R3.01"
     val courseName: String,    // e.g. "Développement web"
+    /** Semantic bucket used for coloring; the feed's own word is in [typeLabel]. */
     val type: CourseType,
+    /** The type word as written in the feed ("TP", "LAB", "LECTURE"…), null if none. */
+    val typeLabel: String? = null,
     val isExam: Boolean,
     val location: String,
     val teachers: List<String>,

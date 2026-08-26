@@ -14,6 +14,7 @@ data class EventEntity(
     val courseCode: String?,
     val courseName: String,
     val type: String,
+    val typeLabel: String?,
     val isExam: Boolean,
     val location: String,
     /** newline-joined */
@@ -29,6 +30,7 @@ data class EventEntity(
         courseCode = courseCode,
         courseName = courseName,
         type = runCatching { CourseType.valueOf(type) }.getOrDefault(CourseType.OTHER),
+        typeLabel = typeLabel,
         isExam = isExam,
         location = location,
         teachers = teachers.split('\n').filter { it.isNotBlank() },
@@ -44,6 +46,7 @@ data class EventEntity(
             courseCode = e.courseCode,
             courseName = e.courseName,
             type = e.type.name,
+            typeLabel = e.typeLabel,
             isExam = e.isExam,
             location = e.location,
             teachers = e.teachers.joinToString("\n"),

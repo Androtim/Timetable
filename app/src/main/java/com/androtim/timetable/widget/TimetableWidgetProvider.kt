@@ -280,7 +280,7 @@ class TimetableWidgetProvider : AppWidgetProvider() {
                 val badgeRes = typeBadgeRes(event.type)
                 if (badgeRes != 0) {
                     card.setViewVisibility(R.id.card_badge, View.VISIBLE)
-                    card.setTextViewText(R.id.card_badge, event.type.name)
+                    card.setTextViewText(R.id.card_badge, event.typeLabel ?: event.type.name)
                     card.setInt(R.id.card_badge, "setBackgroundResource", badgeRes)
                 } else {
                     card.setViewVisibility(R.id.card_badge, View.GONE)

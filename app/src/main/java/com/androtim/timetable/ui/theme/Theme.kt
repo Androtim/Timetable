@@ -27,8 +27,12 @@ private val LightColors = lightColorScheme(
 )
 
 @Composable
-fun TimetableTheme(content: @Composable () -> Unit) {
-    val darkTheme = isSystemInDarkTheme()
+fun TimetableTheme(themeMode: String = "auto", content: @Composable () -> Unit) {
+    val darkTheme = when (themeMode) {
+        "light" -> false
+        "dark" -> true
+        else -> isSystemInDarkTheme()
+    }
     val colorScheme = when {
         Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current

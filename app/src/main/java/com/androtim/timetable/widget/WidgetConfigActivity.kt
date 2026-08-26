@@ -60,9 +60,10 @@ class WidgetConfigActivity : ComponentActivity() {
         }
 
         val prefs = getSharedPreferences(TimetableWidgetProvider.STATE_PREFS, Context.MODE_PRIVATE)
+        val themeMode = com.androtim.timetable.data.Settings(this).themeMode
 
         setContent {
-            TimetableTheme {
+            TimetableTheme(themeMode) {
                 var bgIndex by rememberSaveable {
                     mutableIntStateOf(
                         prefs.getInt(

@@ -79,7 +79,12 @@
 
     <string name="about_title">À propos</string>
     <string name="about_version">Version %1$s</string>
-    <string name="about_privacy">100%% sur l\'appareil : pas de compte, pas de pub, pas de pistage. Le réseau ne sert qu\'à télécharger le calendrier que vous configurez — votre emploi du temps et vos notes ne quittent jamais votre téléphone.</string>
+    <string name="about_privacy" formatted="false">100% sur l\'appareil : pas de compte, pas de pub, pas de pistage. Le réseau ne sert qu\'à télécharger le calendrier que vous configurez — votre emploi du temps et vos notes ne quittent jamais votre téléphone.</string>
+
+    <string name="theme_title">Thème</string>
+    <string name="theme_auto">Automatique (suivre le système)</string>
+    <string name="theme_light">Clair</string>
+    <string name="theme_dark">Sombre</string>
     <string name="about_ai">Transparence : cette application a été développée avec l\'aide d\'une IA (Claude d\'Anthropic), relue et testée par un humain. L\'application elle-même ne contient aucune fonction d\'IA et n\'envoie rien à aucun service d\'IA.</string>
     <string name="about_source">Code source</string>
     <string name="about_privacy_link">Politique de confidentialité</string>

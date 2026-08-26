@@ -115,6 +115,14 @@ class TimetableViewModel(app: Application) : AndroidViewModel(app) {
 
     // ---------- Course colors ----------
 
+    private val _themeMode = MutableStateFlow(settings.themeMode)
+    val themeMode: StateFlow<String> = _themeMode
+
+    fun setThemeMode(mode: String) {
+        settings.themeMode = mode
+        _themeMode.value = mode
+    }
+
     private val _colorMode = MutableStateFlow(settings.colorMode)
     val colorMode: StateFlow<String> = _colorMode
 

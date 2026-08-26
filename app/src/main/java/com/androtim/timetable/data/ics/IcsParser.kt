@@ -29,14 +29,23 @@ object IcsParser {
     // Android's ICU regex engine rejects (?U) (class-load crash) and the JVM
     // treats accented chars as non-word without it. Explicit boundaries via
     // \p{L} and literal accent classes behave identically on both platforms.
-    private val TYPE_REGEX = Regex("""\b(CM|TD|TP)\b""")
+    /**
+     * Session-type vocabulary across common scheduling conventions, mapped to
+     * three semantic buckets (used for coloring). The badge shown to the user
+     * is the word the feed actually used, so any school's terminology fits.
+     */
+    private val TYPE_PATTERNS = listOf(
+        CourseType.TP to Regex("""\b(TP|Labo?|Practical|Workshop|Prácticas)\b""", RegexOption.IGNORE_CASE),
+        CourseType.TD to Regex("""\b(TD|Tutorial|Seminar|Seminario|Übung)\b""", RegexOption.IGNORE_CASE),
+        CourseType.CM to Regex("""\b(CM|Lecture|Cours|Clase)\b""", RegexOption.IGNORE_CASE),
+    )
     private val EXAM_REGEX = Regex(
         """(?i)(?:^|[^\p{L}])(examen|exam|ds|devoir surveill[ée]|contr[ôo]le|partiel|[ée]valuation|qcm)(?=[^\p{L}]|$)"""
     )
 
     /** Tokens that terminate the course-name portion of a SUMMARY. */
     private val NAME_TERMINATOR_REGEX = Regex(
-        """(?i)(?:^|\s)(CM|TD|TP|Examen|Soutenance|ORE|DS|Contr[ôo]le|Partiel)(?=\s|$)"""
+        """(?i)(?:^|\s)(CM|TD|TP|Labo?|Practical|Workshop|Prácticas|Tutorial|Seminar|Seminario|Lecture|Cours|Clase|Examen|Soutenance|ORE|DS|Contr[ôo]le|Partiel)(?=\s|$)"""
     )
 
     fun parse(ics: String): List<ScheduleEvent> {
@@ -69,13 +78,15 @@ object IcsParser {
 
         val (groupTokens, teachers) = parseDescription(description)
         val (code, name) = parseCodeAndName(summary)
+        val (type, typeLabel) = parseType(summary)
 
         return ScheduleEvent(
             uid = uid,
             rawSummary = summary,
             courseCode = code,
             courseName = name,
-            type = parseType(summary),
+            type = type,
+            typeLabel = typeLabel,
             isExam = EXAM_REGEX.containsMatchIn(summary),
             location = location,
             teachers = teachers,
@@ -127,13 +138,12 @@ object IcsParser {
         return code to name.ifEmpty { rest }
     }
 
-    private fun parseType(summary: String): CourseType =
-        when (TYPE_REGEX.find(summary)?.value) {
-            "CM" -> CourseType.CM
-            "TD" -> CourseType.TD
-            "TP" -> CourseType.TP
-            else -> CourseType.OTHER
+    private fun parseType(summary: String): Pair<CourseType, String?> {
+        for ((type, regex) in TYPE_PATTERNS) {
+            regex.find(summary)?.let { return type to it.value.uppercase() }
         }
+        return CourseType.OTHER to null
+    }
 
     private fun unescape(value: String): String {
         val sb = StringBuilder(value.length)

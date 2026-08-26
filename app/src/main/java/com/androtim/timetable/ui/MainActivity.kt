@@ -36,8 +36,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            TimetableTheme {
-                MainScreen()
+            val vm: TimetableViewModel = viewModel()
+            val themeMode by vm.themeMode.collectAsStateWithLifecycle()
+            TimetableTheme(themeMode) {
+                MainScreen(vm)
             }
         }
     }

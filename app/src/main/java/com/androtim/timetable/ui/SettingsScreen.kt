@@ -175,6 +175,22 @@ fun SettingsScreen(
 
         SectionDivider()
 
+        // ----- Theme -----
+        val themeMode by vm.themeMode.collectAsStateWithLifecycle()
+        Text(stringResource(R.string.theme_title), style = MaterialTheme.typography.titleMedium)
+        Spacer(Modifier.height(4.dp))
+        ColorModeOption(R.string.theme_auto, themeMode == Settings.THEME_AUTO) {
+            vm.setThemeMode(Settings.THEME_AUTO)
+        }
+        ColorModeOption(R.string.theme_light, themeMode == Settings.THEME_LIGHT) {
+            vm.setThemeMode(Settings.THEME_LIGHT)
+        }
+        ColorModeOption(R.string.theme_dark, themeMode == Settings.THEME_DARK) {
+            vm.setThemeMode(Settings.THEME_DARK)
+        }
+
+        SectionDivider()
+
         // ----- Course colors -----
         Text(stringResource(R.string.color_title), style = MaterialTheme.typography.titleMedium)
         Spacer(Modifier.height(4.dp))

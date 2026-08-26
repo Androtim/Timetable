@@ -31,6 +31,11 @@ class Settings(context: Context) {
         get() = prefs.getStringSet(KEY_WIDGET_GROUPS, null)?.toSet() ?: emptySet()
         set(value) = prefs.edit().putStringSet(KEY_WIDGET_GROUPS, value.toSet()).apply()
 
+    /** App theme: [THEME_AUTO], [THEME_LIGHT] or [THEME_DARK]. */
+    var themeMode: String
+        get() = prefs.getString(KEY_THEME_MODE, THEME_AUTO) ?: THEME_AUTO
+        set(value) = prefs.edit().putString(KEY_THEME_MODE, value).apply()
+
     /** Course color mode: [COLOR_MODE_AUTO], [COLOR_MODE_SINGLE] or [COLOR_MODE_MANUAL]. */
     var colorMode: String
         get() = prefs.getString(KEY_COLOR_MODE, COLOR_MODE_AUTO) ?: COLOR_MODE_AUTO
@@ -94,6 +99,11 @@ class Settings(context: Context) {
 
         private const val KEY_LEGACY_APP_GROUP = "app_group"
         private const val KEY_LEGACY_WIDGET_GROUP = "widget_group"
+
+        const val KEY_THEME_MODE = "theme_mode"
+        const val THEME_AUTO = "auto"
+        const val THEME_LIGHT = "light"
+        const val THEME_DARK = "dark"
 
         const val COLOR_MODE_AUTO = "auto"
         const val COLOR_MODE_SINGLE = "single"

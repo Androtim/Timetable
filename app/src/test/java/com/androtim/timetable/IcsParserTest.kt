@@ -34,6 +34,7 @@ class IcsParserTest {
         assertEquals("R3.12", e.courseCode)
         assertEquals("Anglais", e.courseName)
         assertEquals(CourseType.TP, e.type)
+        assertEquals("TP", e.typeLabel)
         assertFalse(e.isExam)
         assertTrue(e.groupTokens.contains("GA2-2"))
         assertTrue(GroupFilter.matches(setOf("GA2-2"), e.groupTokens))
