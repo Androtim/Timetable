@@ -45,8 +45,8 @@ class SyncWorker(context: Context, params: WorkerParameters) :
                         .setRequiredNetworkType(NetworkType.CONNECTED)
                         .build()
                 )
-                // The AMU server rate-limits ("Too much requests"); back off
-                // gently instead of hammering it.
+                // ADE servers rate-limit ("Too much requests"); back off
+                // gently instead of hammering them.
                 .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 5, TimeUnit.MINUTES)
                 .build()
             WorkManager.getInstance(context).enqueueUniquePeriodicWork(

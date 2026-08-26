@@ -8,8 +8,8 @@ home-screen widget (day layout when small, full week grid when large) with in-wi
 navigation. Includes per-event and per-day notes, three course-color modes
 (auto/single/manual), and English/French/Spanish localization.
 
-Originally built against the AMU ADE feed — the format notes below describe that
-feed and remain the reference test fixture.
+Originally built against a French university's ADE feed — the format notes below
+describe that feed; an anonymized snapshot serves as the reference test fixture.
 
 ## Architecture
 
@@ -77,8 +77,8 @@ gradlew.bat testDebugUnitTest    # parser tests run against the real feed sample
 ```
 
 Requirements: JDK 17+ and Android SDK platform 34 (`local.properties` points to the SDK).
-The parser unit tests use `app/src/test/resources/amu_feed_sample.ics`, a snapshot of the
-real feed taken on 2026-08-26 (443 events).
+The parser unit tests use `app/src/test/resources/ade_feed_sample.ics`, an anonymized
+snapshot of a real ADE feed taken on 2026-08-26 (443 events, teacher names replaced).
 
 ## Transparency: AI-assisted development
 

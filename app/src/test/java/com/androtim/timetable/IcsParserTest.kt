@@ -14,7 +14,7 @@ import java.time.LocalTime
 class IcsParserTest {
 
     private val events by lazy {
-        val ics = javaClass.getResourceAsStream("/amu_feed_sample.ics")!!
+        val ics = javaClass.getResourceAsStream("/ade_feed_sample.ics")!!
             .readBytes().toString(Charsets.UTF_8)
         IcsParser.parse(ics)
     }
@@ -30,7 +30,7 @@ class IcsParserTest {
 
     @Test
     fun `parses a TP event with half-group and teacher`() {
-        val e = events.first { it.rawSummary == "R3.12 Anglais TP GA2-2" && it.teachers.contains("VERDIER Philippine") }
+        val e = events.first { it.rawSummary == "R3.12 Anglais TP GA2-2" && it.teachers.contains("PERRIN Laura") }
         assertEquals("R3.12", e.courseCode)
         assertEquals("Anglais", e.courseName)
         assertEquals(CourseType.TP, e.type)
@@ -44,9 +44,9 @@ class IcsParserTest {
 
     @Test
     fun `teacher lines are separated from group tokens without a hardcoded list`() {
-        // "DE SOLMINIHAC Pierre Alexis" spans a folded line in the raw feed
-        val e = events.first { it.teachers.any { t -> t.startsWith("DE SOLMINIHAC") } }
-        assertTrue(e.teachers.contains("DE SOLMINIHAC Pierre Alexis"))
+        // "LAURENT FABRE Paul Zoe" has a multi-word surname and given name
+        val e = events.first { it.teachers.any { t -> t.startsWith("LAURENT FABRE") } }
+        assertTrue(e.teachers.contains("LAURENT FABRE Paul Zoe"))
         // group-like lines must never be classified as teachers
         events.forEach { ev ->
             ev.teachers.forEach { teacher ->
@@ -98,7 +98,7 @@ class IcsParserTest {
         val e = events.first { it.groupTokens.containsAll(listOf("GA1-1", "GB-2")) }
         assertTrue(GroupFilter.matches(setOf("GA1-1"), e.groupTokens))
         assertTrue(GroupFilter.matches(setOf("GB-2"), e.groupTokens))
-        assertTrue(e.teachers.contains("CASALI Alain"))
+        assertTrue(e.teachers.contains("MOREAU Claire"))
     }
 
     @Test

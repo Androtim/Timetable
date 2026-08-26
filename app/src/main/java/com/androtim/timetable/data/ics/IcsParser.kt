@@ -8,7 +8,7 @@ import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
 /**
- * Parser for the AMU ADE iCal export.
+ * Parser for ADE-style iCal exports (common in French universities).
  *
  * Observed VEVENT shape (after unfolding):
  *   SUMMARY:R3.04 Qualité de développement TP GA2-1
