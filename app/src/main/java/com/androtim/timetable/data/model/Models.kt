@@ -3,7 +3,12 @@ package com.androtim.timetable.data.model
 import java.time.Instant
 import java.time.ZoneId
 
-val PARIS_ZONE: ZoneId = ZoneId.of("Europe/Paris")
+/**
+ * The zone schedules are displayed in: the device's own. Feeds carry absolute
+ * instants (UTC, or a TZID/floating time resolved at parse time), so a student
+ * abroad sees their timetable in local time rather than the school's.
+ */
+val DISPLAY_ZONE: ZoneId get() = ZoneId.systemDefault()
 
 /**
  * Group filtering over the free-form group tokens found in each VEVENT's
@@ -46,4 +51,6 @@ data class ScheduleEvent(
     val groupTokens: List<String>,
     val start: Instant,
     val end: Instant,
+    /** DTSTART was a date, not a date-time: shown as "all day", never on the hour grid. */
+    val isAllDay: Boolean = false,
 )

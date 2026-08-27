@@ -50,7 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.androtim.timetable.R
 import com.androtim.timetable.data.Settings
-import com.androtim.timetable.data.model.PARIS_ZONE
+import com.androtim.timetable.data.model.DISPLAY_ZONE
 import java.time.Instant
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -280,7 +280,7 @@ fun SettingsScreen(
             else stringResource(
                 R.string.last_sync,
                 Instant.ofEpochMilli(lastSync)
-                    .atZone(PARIS_ZONE)
+                    .atZone(DISPLAY_ZONE)
                     .format(DateTimeFormatter.ofPattern("EEE d MMM yyyy, HH:mm", Locale.getDefault())),
             ),
             style = MaterialTheme.typography.bodyMedium,

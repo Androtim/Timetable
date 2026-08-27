@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -64,7 +66,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.androtim.timetable.R
 import com.androtim.timetable.data.model.CourseType
-import com.androtim.timetable.data.model.PARIS_ZONE
+import com.androtim.timetable.data.model.DISPLAY_ZONE
 import com.androtim.timetable.data.model.ScheduleEvent
 import com.androtim.timetable.ui.theme.BadgeCm
 import com.androtim.timetable.ui.theme.BadgeTd
@@ -104,7 +106,7 @@ fun TimetableScreen(
     modifier: Modifier = Modifier,
 ) {
     val boundsPair by vm.dateBounds.collectAsStateWithLifecycle()
-    val today = LocalDate.now(PARIS_ZONE)
+    val today = LocalDate.now(DISPLAY_ZONE)
     val bounds = boundsPair?.let { TimetableBounds(it.first, it.second) }
         ?: TimetableBounds(today.minusDays(7), today.plusDays(30))
 
@@ -173,7 +175,7 @@ private fun DayModeContent(
         }
         TextButton(
             onClick = {
-                val today = bounds.clamp(LocalDate.now(PARIS_ZONE))
+                val today = bounds.clamp(LocalDate.now(DISPLAY_ZONE))
                 scope.launch {
                     pagerState.animateScrollToPage(ChronoUnit.DAYS.between(bounds.start, today).toInt())
                 }
@@ -312,17 +314,26 @@ fun EventCard(
             )
             Row(Modifier.padding(12.dp)) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    event.start.atZone(PARIS_ZONE).toLocalTime().format(TIME_FORMAT),
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                    color = contentColorFor(isExam),
-                )
-                Text(
-                    event.end.atZone(PARIS_ZONE).toLocalTime().format(TIME_FORMAT),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = contentColorFor(isExam).copy(alpha = 0.7f),
-                )
+                if (event.isAllDay) {
+                    Text(
+                        stringResource(R.string.all_day),
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.Bold,
+                        color = contentColorFor(isExam),
+                    )
+                } else {
+                    Text(
+                        event.start.atZone(DISPLAY_ZONE).toLocalTime().format(TIME_FORMAT),
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = contentColorFor(isExam),
+                    )
+                    Text(
+                        event.end.atZone(DISPLAY_ZONE).toLocalTime().format(TIME_FORMAT),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = contentColorFor(isExam).copy(alpha = 0.7f),
+                    )
+                }
             }
             Column(Modifier.padding(start = 12.dp).weight(1f)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -408,6 +419,7 @@ private fun TypeBadge(type: CourseType, label: String? = null, small: Boolean = 
 // ---------- Week mode ----------
 
 @Composable
+@OptIn(ExperimentalLayoutApi::class)
 private fun WeekModeContent(
     vm: TimetableViewModel,
     bounds: TimetableBounds,
@@ -451,16 +463,22 @@ private fun WeekModeContent(
         }
     }
 
-    // Legend: which color means what
-    Row(
-        Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 2.dp),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        LegendDot(BadgeTp, "TP")
-        LegendDot(BadgeTd, "TD")
-        LegendDot(BadgeCm, "CM")
-        LegendDot(ExamRed, stringResource(R.string.legend_exam))
+    // Legend: only the session types this week actually contains, labelled with
+    // the word the feed itself used, so a school that says "Lecture" is never
+    // shown "CM". Weeks with no recognised type show no legend at all.
+    val weekEvents by remember(weekStart) { vm.rangeEvents(weekStart, weekStart.plusDays(7)) }
+        .collectAsStateWithLifecycle(initialValue = emptyList())
+    val legend = remember(weekEvents) { weekLegend(weekEvents) }
+    val hasExam = remember(weekEvents) { weekEvents.any { it.isExam } }
+
+    if (legend.isNotEmpty() || hasExam) {
+        FlowRow(
+            Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 2.dp),
+            horizontalArrangement = Arrangement.Center,
+        ) {
+            legend.forEach { (color, label) -> LegendDot(color, label) }
+            if (hasExam) LegendDot(ExamRed, stringResource(R.string.legend_exam))
+        }
     }
 
     HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { page ->
@@ -522,14 +540,39 @@ private fun typePillColor(type: CourseType): Color = when (type) {
     CourseType.OTHER -> Color(0xFF546E7A)
 }
 
+/** Buckets in the order they are shown in the legend. */
+private val LEGEND_ORDER = listOf(CourseType.TP, CourseType.TD, CourseType.CM, CourseType.OTHER)
+
+/**
+ * The session types present in [events], as (color, word) pairs taken from the
+ * feed's own vocabulary. A feed that uses both "TD" and "Tutorial" gets an entry
+ * for each: they share a color but are different words to the reader. Events
+ * whose type was not recognised carry no label and contribute nothing, so an
+ * unfamiliar scheduling scheme yields an empty legend rather than a wrong one.
+ */
+private fun weekLegend(events: List<ScheduleEvent>): List<Pair<Color, String>> {
+    val counts = LinkedHashMap<Pair<CourseType, String>, Int>()
+    for (e in events) {
+        val key = e.type to (e.typeLabel ?: continue)
+        counts[key] = (counts[key] ?: 0) + 1
+    }
+    return counts.keys
+        .sortedWith(
+            compareBy<Pair<CourseType, String>> { LEGEND_ORDER.indexOf(it.first) }
+                .thenByDescending { counts.getValue(it) }
+                .thenBy { it.second }
+        )
+        .map { typePillColor(it.first) to it.second }
+}
+
 @Composable
 private fun WeekPage(vm: TimetableViewModel, monday: LocalDate, onDayClick: (LocalDate) -> Unit) {
     val events by remember(monday) { vm.rangeEvents(monday, monday.plusDays(7)) }
         .collectAsStateWithLifecycle(initialValue = emptyList())
     val byDay = remember(events) {
-        events.groupBy { it.start.atZone(PARIS_ZONE).toLocalDate() }
+        events.groupBy { it.start.atZone(DISPLAY_ZONE).toLocalDate() }
     }
-    val today = LocalDate.now(PARIS_ZONE)
+    val today = LocalDate.now(DISPLAY_ZONE)
     val colors by vm.courseColors.collectAsStateWithLifecycle()
     val notes by vm.notes.collectAsStateWithLifecycle()
     val dayNotes by vm.dayNotes.collectAsStateWithLifecycle()
@@ -543,10 +586,12 @@ private fun WeekPage(vm: TimetableViewModel, monday: LocalDate, onDayClick: (Loc
         if (byDay[saturday].orEmpty().isNotEmpty()) add(saturday)
     }
 
-    val shown = days.flatMap { byDay[it].orEmpty() }
-    val startHour = minOf(8, shown.minOfOrNull { it.start.atZone(PARIS_ZONE).hour } ?: 8)
-    val endHour = maxOf(18, shown.maxOfOrNull {
-        val z = it.end.atZone(PARIS_ZONE)
+    // All-day events carry no meaningful hours; letting them into this range
+    // would stretch the grid to 00h-24h and squash every real class.
+    val timed = days.flatMap { byDay[it].orEmpty() }.filter { !it.isAllDay }
+    val startHour = minOf(8, timed.minOfOrNull { it.start.atZone(DISPLAY_ZONE).hour } ?: 8)
+    val endHour = maxOf(18, timed.maxOfOrNull {
+        val z = it.end.atZone(DISPLAY_ZONE)
         if (z.minute > 0) z.hour + 1 else z.hour
     } ?: 18)
 
@@ -576,6 +621,23 @@ private fun WeekPage(vm: TimetableViewModel, monday: LocalDate, onDayClick: (Loc
                             style = MaterialTheme.typography.titleSmall,
                             fontWeight = if (date == today) FontWeight.Bold else FontWeight.Normal,
                         )
+                        // All-day entries (holidays, trips) sit above the grid.
+                        byDay[date].orEmpty().filter { it.isAllDay }.take(2).forEach { e ->
+                            Text(
+                                e.courseName.ifEmpty { e.rawSummary },
+                                style = MaterialTheme.typography.labelSmall,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                modifier = Modifier
+                                    .padding(top = 2.dp)
+                                    .background(
+                                        MaterialTheme.colorScheme.secondaryContainer,
+                                        RoundedCornerShape(4.dp),
+                                    )
+                                    .padding(horizontal = 4.dp),
+                            )
+                        }
                     }
                 }
             }
@@ -606,7 +668,9 @@ private fun WeekPage(vm: TimetableViewModel, monday: LocalDate, onDayClick: (Loc
                 }
                 days.forEach { date ->
                     DayTimeColumn(
-                        events = byDay[date].orEmpty().sortedBy { it.start },
+                        events = byDay[date].orEmpty()
+                            .filter { !it.isAllDay }
+                            .sortedBy { it.start },
                         startHour = startHour,
                         dpPerHour = dpPerHour,
                         endHour = endHour,
@@ -712,7 +776,7 @@ private fun DayTimeColumn(
             )
         }
         events.forEach { event ->
-            val startZ = event.start.atZone(PARIS_ZONE)
+            val startZ = event.start.atZone(DISPLAY_ZONE)
             val topMinutes = (startZ.hour - startHour) * 60 + startZ.minute
             val durationMinutes = Duration.between(event.start, event.end).toMinutes()
                 .toInt().coerceAtLeast(30)
@@ -747,8 +811,8 @@ private fun WeekBlock(
             .padding(horizontal = 4.dp, vertical = 2.dp),
     ) {
         Text(
-            event.start.atZone(PARIS_ZONE).toLocalTime().format(TIME_FORMAT) +
-                "–" + event.end.atZone(PARIS_ZONE).toLocalTime().format(TIME_FORMAT),
+            event.start.atZone(DISPLAY_ZONE).toLocalTime().format(TIME_FORMAT) +
+                "–" + event.end.atZone(DISPLAY_ZONE).toLocalTime().format(TIME_FORMAT),
             fontSize = 8.sp,
             lineHeight = 9.sp,
             color = Color.White.copy(alpha = 0.85f),
@@ -820,11 +884,11 @@ fun EventDetailDialog(
     onDismiss: () -> Unit,
 ) {
     var noteText by remember(event.uid) { mutableStateOf(initialNote) }
-    val dateLine = event.start.atZone(PARIS_ZONE)
+    val dateLine = event.start.atZone(DISPLAY_ZONE)
         .format(DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.getDefault()))
         .replaceFirstChar { it.uppercase() } +
-        " • " + event.start.atZone(PARIS_ZONE).toLocalTime().format(TIME_FORMAT) +
-        " – " + event.end.atZone(PARIS_ZONE).toLocalTime().format(TIME_FORMAT)
+        " • " + event.start.atZone(DISPLAY_ZONE).toLocalTime().format(TIME_FORMAT) +
+        " – " + event.end.atZone(DISPLAY_ZONE).toLocalTime().format(TIME_FORMAT)
 
     AlertDialog(
         onDismissRequest = onDismiss,

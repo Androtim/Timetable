@@ -15,7 +15,7 @@ import com.androtim.timetable.R
 import com.androtim.timetable.data.ScheduleRepository
 import com.androtim.timetable.data.Settings
 import com.androtim.timetable.data.model.CourseType
-import com.androtim.timetable.data.model.PARIS_ZONE
+import com.androtim.timetable.data.model.DISPLAY_ZONE
 import com.androtim.timetable.data.model.ScheduleEvent
 import com.androtim.timetable.ui.MainActivity
 import kotlinx.coroutines.runBlocking
@@ -72,7 +72,7 @@ class TimetableWidgetProvider : AppWidgetProvider() {
         when (intent.action) {
             ACTION_PREV_DAY -> saveDateAndRedraw(context, id, current.minusDays(delta))
             ACTION_NEXT_DAY -> saveDateAndRedraw(context, id, current.plusDays(delta))
-            ACTION_TODAY -> saveDateAndRedraw(context, id, LocalDate.now(PARIS_ZONE))
+            ACTION_TODAY -> saveDateAndRedraw(context, id, LocalDate.now(DISPLAY_ZONE))
         }
     }
 
@@ -132,7 +132,7 @@ class TimetableWidgetProvider : AppWidgetProvider() {
         private fun loadDate(context: Context, id: Int): LocalDate {
             val epochDay = context.getSharedPreferences(STATE_PREFS, Context.MODE_PRIVATE)
                 .getLong(dateKey(id), Long.MIN_VALUE)
-            return if (epochDay == Long.MIN_VALUE) LocalDate.now(PARIS_ZONE)
+            return if (epochDay == Long.MIN_VALUE) LocalDate.now(DISPLAY_ZONE)
             else LocalDate.ofEpochDay(epochDay)
         }
 
@@ -261,9 +261,13 @@ class TimetableWidgetProvider : AppWidgetProvider() {
             card.setTextViewTextSize(R.id.card_room, TypedValue.COMPLEX_UNIT_SP, 12f * scale)
             card.setTextViewTextSize(R.id.card_teacher, TypedValue.COMPLEX_UNIT_SP, 11f * scale)
 
-            val start = event.start.atZone(PARIS_ZONE).toLocalTime().format(TIME_FORMAT)
-            val end = event.end.atZone(PARIS_ZONE).toLocalTime().format(TIME_FORMAT)
-            card.setTextViewText(R.id.card_time, "$start – $end")
+            if (event.isAllDay) {
+                card.setTextViewText(R.id.card_time, context.getString(R.string.all_day))
+            } else {
+                val start = event.start.atZone(DISPLAY_ZONE).toLocalTime().format(TIME_FORMAT)
+                val end = event.end.atZone(DISPLAY_ZONE).toLocalTime().format(TIME_FORMAT)
+                card.setTextViewText(R.id.card_time, "$start – $end")
+            }
 
             val title = listOfNotNull(event.courseCode, event.courseName)
                 .joinToString(" - ").ifEmpty { event.rawSummary }
@@ -312,9 +316,9 @@ class TimetableWidgetProvider : AppWidgetProvider() {
                     dayNote = null,
                 )
             }
-            val byDay = snapshot.events.groupBy { it.start.atZone(PARIS_ZONE).toLocalDate() }
+            val byDay = snapshot.events.groupBy { it.start.atZone(DISPLAY_ZONE).toLocalDate() }
             val dayNotes = runBlocking { repo.getDayNotesMap() }
-            val today = LocalDate.now(PARIS_ZONE)
+            val today = LocalDate.now(DISPLAY_ZONE)
 
             val saturday = monday.plusDays(5)
             val days = buildList {
@@ -348,11 +352,11 @@ class TimetableWidgetProvider : AppWidgetProvider() {
 
             // Time window shared by all columns so heights are comparable across days
             fun minuteOfDay(e: ScheduleEvent, end: Boolean): Int {
-                val t = (if (end) e.end else e.start).atZone(PARIS_ZONE).toLocalTime()
+                val t = (if (end) e.end else e.start).atZone(DISPLAY_ZONE).toLocalTime()
                 return t.hour * 60 + t.minute
             }
 
-            val shown = days.flatMap { byDay[it].orEmpty() }
+            val shown = days.flatMap { byDay[it].orEmpty() }.filter { !it.isAllDay }
             val windowStart = ((shown.minOfOrNull { minuteOfDay(it, false) } ?: 480) / 60) * 60
             val windowEnd = shown.maxOfOrNull { minuteOfDay(it, true) }
                 ?.let { ((it + 59) / 60) * 60 } ?: 1080
@@ -374,7 +378,7 @@ class TimetableWidgetProvider : AppWidgetProvider() {
                     column.setTextColor(R.id.day_header, Color.parseColor("#8AB4F8"))
                 }
                 var cursor = windowStart
-                byDay[day].orEmpty().sortedBy { it.start }
+                byDay[day].orEmpty().filter { !it.isAllDay }.sortedBy { it.start }
                     .take(MAX_WEEK_CARDS_PER_DAY)
                     .forEach { event ->
                         val startMin = minuteOfDay(event, end = false)
@@ -425,7 +429,7 @@ class TimetableWidgetProvider : AppWidgetProvider() {
             )
             card.setTextViewText(
                 R.id.we_time,
-                event.start.atZone(PARIS_ZONE).toLocalTime().format(TIME_FORMAT)
+                event.start.atZone(DISPLAY_ZONE).toLocalTime().format(TIME_FORMAT)
             )
             card.setTextViewTextSize(R.id.we_time, TypedValue.COMPLEX_UNIT_SP, 8f * scale)
 

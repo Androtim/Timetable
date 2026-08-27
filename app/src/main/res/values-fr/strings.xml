@@ -94,4 +94,5 @@
     <string name="about_source">Code source</string>
     <string name="about_privacy_link">Politique de confidentialité</string>
     <string name="about_feedback">Envoyer un retour</string>
+    <string name="all_day">Journée entière</string>
 </resources>

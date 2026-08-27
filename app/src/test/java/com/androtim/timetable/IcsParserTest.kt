@@ -3,7 +3,7 @@ package com.androtim.timetable
 import com.androtim.timetable.data.ics.IcsParser
 import com.androtim.timetable.data.model.CourseType
 import com.androtim.timetable.data.model.GroupFilter
-import com.androtim.timetable.data.model.PARIS_ZONE
+import com.androtim.timetable.data.model.DISPLAY_ZONE
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -105,7 +105,7 @@ class IcsParserTest {
     fun `UTC timestamps convert to expected Paris local time`() {
         // DTSTART:20261124T143000Z is 15:30 in Paris (UTC+1 in winter)
         val e = events.first { it.start == java.time.Instant.parse("2026-11-24T14:30:00Z") && it.rawSummary.startsWith("R3.12") }
-        val local = e.start.atZone(PARIS_ZONE).toLocalTime()
+        val local = e.start.atZone(DISPLAY_ZONE).toLocalTime()
         assertEquals(LocalTime.of(15, 30), local)
     }
 

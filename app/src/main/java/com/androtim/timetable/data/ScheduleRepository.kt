@@ -7,7 +7,7 @@ import com.androtim.timetable.data.db.EventEntity
 import com.androtim.timetable.data.db.NoteEntity
 import com.androtim.timetable.data.ics.IcsParser
 import com.androtim.timetable.data.model.GroupFilter
-import com.androtim.timetable.data.model.PARIS_ZONE
+import com.androtim.timetable.data.model.DISPLAY_ZONE
 import com.androtim.timetable.data.model.ScheduleEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -41,8 +41,8 @@ class ScheduleRepository(context: Context) {
     }
 
     fun observeRange(from: LocalDate, toExclusive: LocalDate, groups: Set<String>): Flow<List<ScheduleEvent>> {
-        val fromMillis = from.atStartOfDay(PARIS_ZONE).toInstant().toEpochMilli()
-        val toMillis = toExclusive.atStartOfDay(PARIS_ZONE).toInstant().toEpochMilli()
+        val fromMillis = from.atStartOfDay(DISPLAY_ZONE).toInstant().toEpochMilli()
+        val toMillis = toExclusive.atStartOfDay(DISPLAY_ZONE).toInstant().toEpochMilli()
         return dao.observeRange(fromMillis, toMillis).map { list -> list.toDomainFor(groups) }
     }
 
@@ -52,8 +52,8 @@ class ScheduleRepository(context: Context) {
     }
 
     suspend fun getRange(from: LocalDate, toExclusive: LocalDate, groups: Set<String>): List<ScheduleEvent> {
-        val fromMillis = from.atStartOfDay(PARIS_ZONE).toInstant().toEpochMilli()
-        val toMillis = toExclusive.atStartOfDay(PARIS_ZONE).toInstant().toEpochMilli()
+        val fromMillis = from.atStartOfDay(DISPLAY_ZONE).toInstant().toEpochMilli()
+        val toMillis = toExclusive.atStartOfDay(DISPLAY_ZONE).toInstant().toEpochMilli()
         return dao.getRange(fromMillis, toMillis).toDomainFor(groups)
     }
 
@@ -92,8 +92,8 @@ class ScheduleRepository(context: Context) {
             else {
                 val min = list.minOf { it.startMillis }
                 val max = list.maxOf { it.startMillis }
-                java.time.Instant.ofEpochMilli(min).atZone(PARIS_ZONE).toLocalDate() to
-                    java.time.Instant.ofEpochMilli(max).atZone(PARIS_ZONE).toLocalDate()
+                java.time.Instant.ofEpochMilli(min).atZone(DISPLAY_ZONE).toLocalDate() to
+                    java.time.Instant.ofEpochMilli(max).atZone(DISPLAY_ZONE).toLocalDate()
             }
         }
 
@@ -142,8 +142,8 @@ class ScheduleRepository(context: Context) {
         map { it.toDomain() }.filter { GroupFilter.matches(groups, it.groupTokens) }
 
     private fun LocalDate.dayBoundsMillis(): Pair<Long, Long> {
-        val start = atStartOfDay(PARIS_ZONE).toInstant().toEpochMilli()
-        val end = plusDays(1).atStartOfDay(PARIS_ZONE).toInstant().toEpochMilli()
+        val start = atStartOfDay(DISPLAY_ZONE).toInstant().toEpochMilli()
+        val end = plusDays(1).atStartOfDay(DISPLAY_ZONE).toInstant().toEpochMilli()
         return start to end
     }
 

@@ -23,6 +23,7 @@ data class EventEntity(
     val groupTokens: String,
     val startMillis: Long,
     val endMillis: Long,
+    val isAllDay: Boolean = false,
 ) {
     fun toDomain(): ScheduleEvent = ScheduleEvent(
         uid = uid,
@@ -37,6 +38,7 @@ data class EventEntity(
         groupTokens = groupTokens.split('\n').filter { it.isNotBlank() },
         start = Instant.ofEpochMilli(startMillis),
         end = Instant.ofEpochMilli(endMillis),
+        isAllDay = isAllDay,
     )
 
     companion object {
@@ -53,6 +55,7 @@ data class EventEntity(
             groupTokens = e.groupTokens.joinToString("\n"),
             startMillis = e.start.toEpochMilli(),
             endMillis = e.end.toEpochMilli(),
+            isAllDay = e.isAllDay,
         )
     }
 }
