@@ -60,7 +60,8 @@
     <string name="done">Done</string>
 
     <string name="setup_title">Set up your timetable</string>
-    <string name="setup_intro">Paste the iCal (.ics) link of your school timetable. For ADE portals this is the \"anonymous_cal\" export link.</string>
+    <string name="setup_intro">Paste the iCal (.ics) link your school publishes for your timetable. It usually lives in your student portal, often labelled \"export\", \"subscribe\" or \"iCal\".</string>
+    <string name="setup_try_demo">No link yet? Try the demo timetable</string>
     <string name="setup_url_label">Calendar URL</string>
     <string name="setup_load">Load calendar</string>
     <string name="setup_loading">Downloading calendar… this can take a few minutes on slow school servers.</string>

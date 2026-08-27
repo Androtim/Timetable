@@ -60,7 +60,8 @@
     <string name="done">Hecho</string>
 
     <string name="setup_title">Configura tu horario</string>
-    <string name="setup_intro">Pega el enlace iCal (.ics) de tu horario escolar. En los portales ADE es el enlace de exportación \"anonymous_cal\".</string>
+    <string name="setup_intro">Pega el enlace iCal (.ics) que tu centro publica para tu horario. Suele estar en el portal del estudiante, a menudo como \"exportar\", \"suscribirse\" o \"iCal\".</string>
+    <string name="setup_try_demo">¿Aún no tienes enlace? Prueba el horario de demostración</string>
     <string name="setup_url_label">URL del calendario</string>
     <string name="setup_load">Cargar calendario</string>
     <string name="setup_loading">Descargando calendario… puede tardar unos minutos si el servidor de la escuela va lento.</string>

@@ -60,7 +60,8 @@
     <string name="done">Terminé</string>
 
     <string name="setup_title">Configurer votre emploi du temps</string>
-    <string name="setup_intro">Collez le lien iCal (.ics) de votre emploi du temps. Pour les portails ADE, c\'est le lien d\'export \"anonymous_cal\".</string>
+    <string name="setup_intro">Collez le lien iCal (.ics) que votre établissement publie pour votre emploi du temps. Il se trouve généralement dans votre portail étudiant, souvent sous \"exporter\", \"s\'abonner\" ou \"iCal\".</string>
+    <string name="setup_try_demo">Pas encore de lien ? Essayez l\'emploi du temps de démonstration</string>
     <string name="setup_url_label">URL du calendrier</string>
     <string name="setup_load">Charger le calendrier</string>
     <string name="setup_loading">Téléchargement du calendrier… cela peut prendre quelques minutes si le serveur de l\'école est lent.</string>

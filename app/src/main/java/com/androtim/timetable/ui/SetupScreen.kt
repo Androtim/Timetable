@@ -13,6 +13,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -35,6 +36,13 @@ import com.androtim.timetable.R
  * Step 1: paste the .ics URL and load it. Step 2 (once data arrived):
  * pick the group tokens that apply to you.
  */
+/**
+ * A fictional year-long timetable, so the app can be tried without a school
+ * account. Served from the project's own repository.
+ */
+private const val DEMO_FEED_URL =
+    "https://raw.githubusercontent.com/Androtim/Timetable/main/demo/demo.ics"
+
 @Composable
 fun SetupScreen(vm: TimetableViewModel, onDone: () -> Unit, modifier: Modifier = Modifier) {
     val feedUrl by vm.feedUrl.collectAsStateWithLifecycle()
@@ -80,6 +88,17 @@ fun SetupScreen(vm: TimetableViewModel, onDone: () -> Unit, modifier: Modifier =
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
+        }
+
+        // Fills the field rather than loading straight away, so it is clear
+        // what is being fetched and the URL can be inspected or edited first.
+        if (!hasData && !isRefreshing) {
+            TextButton(
+                onClick = { url = DEMO_FEED_URL },
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(stringResource(R.string.setup_try_demo))
+            }
         }
 
         if (hasData) {
