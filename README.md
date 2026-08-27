@@ -76,6 +76,20 @@ and open it on your phone. For automatic updates, add this repo to
 [Obtainium](https://github.com/ImranR98/Obtainium). F-Droid and Play Store
 listings are in progress.
 
+### Try it without a school account
+
+At first launch the app asks for a calendar link. If you do not have one to
+hand, paste this demo feed:
+
+```
+https://raw.githubusercontent.com/Androtim/Timetable/main/demo/demo.ics
+```
+
+It is entirely fictional — invented courses, rooms and teachers — and covers a
+full 2026-27 academic year, so there is always something to look at. It includes
+term breaks, all-day holidays and exam weeks, which is enough to see group
+filtering, the week grid and the widget working.
+
 ## Building
 
 ```
@@ -83,7 +97,7 @@ gradlew.bat assembleDebug        # APK at app/build/outputs/apk/debug/
 gradlew.bat testDebugUnitTest    # parser tests run against the real feed sample
 ```
 
-Requirements: JDK 17+ and Android SDK platform 34 (`local.properties` points to the SDK).
+Requirements: JDK 17+ and Android SDK platform 36 (`local.properties` points to the SDK).
 The parser unit tests use `app/src/test/resources/ade_feed_sample.ics`, an anonymized
 snapshot of a real ADE feed taken on 2026-08-26 (443 events, teacher names replaced).
 
