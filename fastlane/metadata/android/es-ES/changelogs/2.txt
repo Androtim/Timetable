@@ -1,0 +1,7 @@
+Compatible con muchos más calendarios académicos.
+
+- El horario se muestra en tu propia zona horaria
+- Los calendarios que publican una clase semanal como una sola entrada repetida ahora muestran todas las semanas, incluidas las sesiones canceladas o trasladadas
+- Las entradas de día completo (festivos, salidas, periodos de exámenes) ya no se omiten
+- Las horas se leen correctamente sea cual sea el formato del calendario
+- Los tipos de sesión se reconocen en más idiomas, y la leyenda usa el vocabulario de tu centro

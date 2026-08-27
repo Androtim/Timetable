@@ -1,0 +1,7 @@
+Works with far more schools' calendars.
+
+- Your timetable now shows in your own time zone, not always Paris time
+- Calendars that publish a weekly class as one repeating entry now show every week of it, including cancelled dates and moved sessions
+- All-day entries (holidays, trips, exam periods) are no longer skipped
+- Class times are read correctly whichever way your school writes them
+- Session types are recognised in more languages, and the colour key now uses your school's own wording instead of the French TP/TD/CM
