@@ -11,8 +11,8 @@ AuthorName: Androtim
 SourceCode: https://github.com/Androtim/Timetable
 IssueTracker: https://github.com/Androtim/Timetable/issues
 
-AutoName: Timetable
-Summary: Offline school timetable with a smart home-screen widget
+AutoName: Timetile
+Summary: Offline school timetable with a resizable home-screen widget
 
 RepoType: git
 Repo: https://github.com/Androtim/Timetable.git

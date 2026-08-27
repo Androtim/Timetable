@@ -1,17 +1,29 @@
-Marre du portail d'emploi du temps trop lent de votre fac ? Timetable télécharge le flux iCal (.ics) de votre école, met toute l'année en cache sur votre appareil et affiche votre emploi du temps instantanément — même sans connexion.
+Timetile affiche votre emploi du temps là où vous regardez déjà : l’écran d’accueil.
 
-Fonctionnalités :
+Collez une fois le lien du calendrier de votre établissement. Timetile télécharge tout le semestre, le garde sur votre appareil et s’ouvre instantanément — dans un amphi sans réseau, dans le bus, partout.
 
-• Importez n'importe quel lien iCal/ADE — collez-le une fois au premier lancement
-• Détection automatique des groupes : l'appli trouve les étiquettes de groupe du flux et vous laisse filtrer sur les vôtres
-• Vue semaine en vraie grille horaire (échelle des heures, blocs proportionnels) et vue jour détaillée
-• Widget d'écran d'accueil adaptatif : jour en petit format, semaine complète en grand, avec navigation intégrée et personnalisation par widget (opacité, taille du texte, couleur des cartes)
-• Examens surlignés en rouge pour ne jamais les rater
-• Notes sur un cours ou une journée — visibles dans l'appli et le widget
-• Une couleur stable par cours (modes automatique, couleur unique ou manuel)
-• Synchronisation en arrière-plan toutes les 3 heures ; 100 % hors ligne entre-temps
-• Pas de compte, pas de pub, pas de pistage — vos données ne quittent jamais votre appareil
+Compatible avec votre établissement
+N’importe quel agenda au format standard (iCal / ICS), quel que soit le logiciel de votre université. Timetile comprend les cours récurrents, les séances annulées ou déplacées, et les entrées sur la journée entière comme les vacances et les périodes d’examens. Les horaires s’affichent dans votre fuseau horaire.
 
-Transparence : cette application a été développée avec l'aide d'une IA (Claude d'Anthropic), relue et testée par un humain. L'application elle-même ne contient aucune fonction d'IA et n'envoie rien à aucun service d'IA — tout reste sur votre appareil. Politique de confidentialité : https://github.com/Androtim/Timetable/blob/main/PRIVACY.md
+Il trouve vos groupes tout seul
+Il lit les étiquettes de groupe déjà présentes dans l’agenda et vous laisse filtrer sur les vôtres. Aucune configuration, aucun compte : juste le lien.
 
-Libre et open source (GPLv3) : https://github.com/Androtim/Timetable
+Un widget qui mérite sa place
+Redimensionnez-le et il change de forme : liste compacte du jour en petit, grille de la semaine en grand. Changez de jour sans ouvrir l’application. Opacité, taille du texte et couleur des cartes se règlent widget par widget.
+
+Pensé pour une semaine de cours
+• Vue semaine en grille horaire, et vue jour pour le détail
+• Examens en rouge, impossible de les manquer
+• Notes sur un cours ou sur une journée, visibles aussi dans le widget
+• Une couleur stable par matière, tout le semestre
+• Types de séance affichés avec les mots de votre établissement — TP, TD, CM, Lab, Seminar
+• Synchronisation discrète en arrière-plan ; totalement utilisable hors ligne
+
+Privé par conception
+Pas de compte, pas de publicité, pas de statistiques, pas de traceurs. La seule requête réseau de Timetile va vers l’adresse d’agenda que vous avez saisie, directement de votre téléphone au serveur de votre établissement. Votre emploi du temps, vos groupes et vos notes restent sur l’appareil et sont exclus de la sauvegarde cloud ; lors de la configuration d’un nouveau téléphone, Android peut les copier directement d’un appareil à l’autre.
+
+Timetile a été développé avec l’aide d’une IA (Claude d’Anthropic), relu et testé par un humain. L’application ne contient aucune fonction d’IA et n’envoie rien à aucun service d’IA.
+
+Libre et open source, GPLv3.
+Code source : https://github.com/Androtim/Timetable
+Politique de confidentialité : https://github.com/Androtim/Timetable/blob/main/PRIVACY.md

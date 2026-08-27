@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Horario</string>
-    <string name="widget_label">Horario (3×2)</string>
+    <string name="app_name">Timetile</string>
+    <string name="widget_label">Timetile (3×2)</string>
     <string name="widget_prev_day">Día anterior</string>
     <string name="widget_next_day">Día siguiente</string>
     <string name="widget_no_classes">Sin clases 🎉</string>
@@ -79,12 +79,12 @@
 
     <string name="about_title">Acerca de</string>
     <string name="about_version">Versión %1$s</string>
-    <string name="about_privacy" formatted="false">100% en el dispositivo: sin cuenta, sin anuncios, sin rastreo. La red solo se usa para descargar el calendario que configures — tu horario y tus notas nunca salen de tu teléfono.</string>
+    <string name="about_privacy" formatted="false">100% en el dispositivo: sin cuenta, sin anuncios, sin rastreo. La red solo se usa para descargar el calendario que configures \u2014 tu horario y tus notas nunca se suben a un servidor.</string>
 
     <string name="language_title">Idioma</string>
     <string name="language_system">Idioma del sistema</string>
 
-    <string name="privacy_dialog_text">Timetable no recopila ningún dato personal. Sin cuenta, sin estadísticas, sin anuncios, sin rastreadores.\n\nLa red se usa para una sola cosa: descargar el archivo de calendario desde la URL que configuraste, directamente de tu dispositivo al servidor de tu escuela.\n\nTu horario, tus grupos, tus notas y tus preferencias se guardan solo en este dispositivo y se eliminan al desinstalar la app. Como no se recopila nada, nunca se comparte ni se vende nada.\n\nEsta app se desarrolló con ayuda de una IA (Claude de Anthropic), pero no contiene funciones de IA y no envía nada a ningún servicio de IA.</string>
+    <string name="privacy_dialog_text">Timetile no recoge ningún dato personal. Sin cuenta, sin estadísticas, sin anuncios, sin rastreadores.\n\nLa red se usa para una sola cosa: descargar el archivo de calendario desde la dirección que hayas configurado, directamente de tu dispositivo al servidor de tu centro.\n\nTu horario, tus grupos, tus notas y tus preferencias se guardan en este dispositivo y nunca se suben a ningún servidor: están excluidos de la copia de seguridad en la nube. Al configurar un teléfono nuevo, Android puede copiarlos directamente de un dispositivo a otro. Al desinstalar se borran.\n\nEsta aplicación se desarrolló con ayuda de IA (Claude, de Anthropic), pero no incluye funciones de IA ni envía nada a ningún servicio de IA.</string>
 
     <string name="theme_title">Tema</string>
     <string name="theme_auto">Automático (seguir el sistema)</string>

@@ -60,6 +60,13 @@ android {
     }
 }
 
+// Unit tests must not depend on the machine's clock settings: DISPLAY_ZONE
+// follows the device, so a zone-sensitive assertion can pass in Paris and fail
+// on a UTC CI runner. Pin the test JVM so both see the same thing.
+tasks.withType<Test>().configureEach {
+    jvmArgs("-Duser.timezone=UTC")
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

@@ -1,1 +1,1 @@
-Horario escolar sin conexión con widget inteligente. Importa cualquier feed iCal.
+Tu horario en la pantalla de inicio. Sin conexión, desde cualquier calendario.

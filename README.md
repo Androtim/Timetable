@@ -1,4 +1,4 @@
-# Timetable — offline school timetable + widget
+# Timetile — offline school timetable + widget
 
 Native Android app (Kotlin, Jetpack Compose) for any school publishing an iCal/ADE
 feed: paste your .ics link at first launch, the app caches the whole year in a local

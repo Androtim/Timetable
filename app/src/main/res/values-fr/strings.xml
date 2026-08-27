@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Emploi du temps</string>
-    <string name="widget_label">Emploi du temps (3×2)</string>
+    <string name="app_name">Timetile</string>
+    <string name="widget_label">Timetile (3×2)</string>
     <string name="widget_prev_day">Jour précédent</string>
     <string name="widget_next_day">Jour suivant</string>
     <string name="widget_no_classes">Pas de cours 🎉</string>
@@ -79,12 +79,12 @@
 
     <string name="about_title">À propos</string>
     <string name="about_version">Version %1$s</string>
-    <string name="about_privacy" formatted="false">100% sur l\'appareil : pas de compte, pas de pub, pas de pistage. Le réseau ne sert qu\'à télécharger le calendrier que vous configurez — votre emploi du temps et vos notes ne quittent jamais votre téléphone.</string>
+    <string name="about_privacy" formatted="false">100% sur l\'appareil : pas de compte, pas de publicité, pas de pistage. Le réseau sert uniquement à télécharger le calendrier que vous configurez \u2014 votre emploi du temps et vos notes ne sont jamais envoyés sur un serveur.</string>
 
     <string name="language_title">Langue</string>
     <string name="language_system">Langue du système</string>
 
-    <string name="privacy_dialog_text">Timetable ne collecte aucune donnée personnelle. Pas de compte, pas de statistiques, pas de pub, pas de traqueurs.\n\nLe réseau ne sert qu\'à une seule chose : télécharger le fichier calendrier depuis l\'URL que vous avez configurée, directement de votre appareil vers le serveur de votre école.\n\nVotre emploi du temps, vos groupes, vos notes et vos préférences sont stockés uniquement sur cet appareil et supprimés quand vous désinstallez l\'appli. Comme rien n\'est collecté, rien n\'est jamais partagé ni vendu.\n\nCette appli a été développée avec l\'aide d\'une IA (Claude d\'Anthropic), mais ne contient aucune fonction d\'IA et n\'envoie rien à aucun service d\'IA.</string>
+    <string name="privacy_dialog_text">Timetile ne collecte aucune donnée personnelle. Pas de compte, pas de statistiques, pas de publicité, pas de traceurs.\n\nLe réseau sert à une seule chose : télécharger le fichier calendrier depuis l\'adresse que vous avez indiquée, directement de votre appareil au serveur de votre établissement.\n\nVotre emploi du temps, vos groupes, vos notes et vos préférences sont stockés sur cet appareil et ne sont jamais envoyés sur un serveur : ils sont exclus de la sauvegarde cloud. Lors de la configuration d\'un nouveau téléphone, Android peut les copier directement d\'un appareil à l\'autre. La désinstallation les supprime.\n\nCette application a été développée avec l\'aide d\'une IA (Claude d\'Anthropic), mais ne contient aucune fonction d\'IA et n\'envoie rien à aucun service d\'IA.</string>
 
     <string name="theme_title">Thème</string>
     <string name="theme_auto">Automatique (suivre le système)</string>

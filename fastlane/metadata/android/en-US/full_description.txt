@@ -1,17 +1,29 @@
-Tired of your university's slow timetable portal? Timetable downloads your school's iCal (.ics) feed once, caches the whole year on your device, and shows your schedule instantly — even with no connection.
+Timetile puts your class schedule where you actually look: the home screen.
 
-Features:
+Paste your school's calendar link once. Timetile downloads the whole term, keeps it on your device, and opens instantly — in a basement lecture hall with no signal, on the bus, anywhere.
 
-• Import any iCal/ADE calendar link — paste it once at first launch
-• Automatic group detection: the app finds the group tags in your feed and lets you filter to exactly your groups
-• Week view as a real time grid (hour scale, proportional blocks) and a detailed day view
-• Size-responsive home-screen widget: compact day layout when small, full week grid when large, with in-widget navigation and per-widget customization (opacity, text size, card color)
-• Exams highlighted in red so you never miss them
-• Notes on any class or any day — they show up in the app and the widget
-• One stable color per course (automatic, single-color, or manual modes)
-• Syncs in the background every 3 hours; works fully offline in between
-• No account, no ads, no tracking — your data never leaves your device
+Works with your school
+Any standard calendar feed (iCal / ICS), whatever system your university runs. Timetile understands repeating classes, cancelled sessions, rescheduled ones, and all-day entries like holidays and exam periods. Times are shown in your own time zone, wherever you are.
 
-Transparency: this app was developed with the assistance of AI (Anthropic's Claude), reviewed and tested by a human. The app itself contains no AI features and sends nothing to any AI service — everything stays on your device. Privacy policy: https://github.com/Androtim/Timetable/blob/main/PRIVACY.md
+Finds your groups for you
+It reads the group tags your school already puts in the feed and lets you filter down to the ones that are yours. No manual setup, no account, nothing to configure but the link.
 
-Free and open source (GPLv3): https://github.com/Androtim/Timetable
+A widget that earns its space
+Resize it and it changes shape: a compact day list when small, a full week grid when large. Step through days without opening the app. Opacity, text size and card colour are set per widget, so it sits properly on your wallpaper.
+
+Built around a school week
+• Week view as a real time grid, plus a day view when you want detail
+• Exams highlighted in red so you never miss one
+• Notes on any class or any day, shown in the app and on the widget
+• One stable colour per course, all term long
+• Session types labelled in your school's own words — TP, Lab, Vorlesung, Seminar, Lecture
+• Refreshes quietly in the background; fully usable offline in between
+
+Private by design
+No account, no ads, no analytics, no trackers. The only network request Timetile ever makes is to the calendar address you entered, straight from your phone to your school's server. Your schedule, groups and notes stay on your device and are excluded from cloud backup; when you set up a new phone, Android can copy them across directly, device to device.
+
+Timetile was built with AI assistance (Anthropic's Claude), reviewed and tested by a human. The app itself contains no AI features and sends nothing to any AI service.
+
+Free and open source, GPLv3.
+Source code: https://github.com/Androtim/Timetable
+Privacy policy: https://github.com/Androtim/Timetable/blob/main/PRIVACY.md
