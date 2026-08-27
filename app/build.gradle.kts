@@ -15,12 +15,12 @@ val keystoreProps = Properties().apply {
 
 android {
     namespace = "com.androtim.timetable"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.androtim.timetable"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
     }
