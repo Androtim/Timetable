@@ -10,3 +10,6 @@ build/
 captures/
 .externalNativeBuild
 .cxx
+
+# Scratch screenshots shared with Claude, never published
+personal pics/
