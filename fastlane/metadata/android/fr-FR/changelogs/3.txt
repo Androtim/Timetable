@@ -1,0 +1,7 @@
+Compatible avec bien plus d'agendas d'établissements.
+
+- L'emploi du temps s'affiche maintenant dans votre fuseau horaire
+- Les agendas qui publient un cours hebdomadaire sous forme d'une seule entrée répétée affichent désormais toutes les semaines, y compris les séances annulées ou déplacées
+- Les entrées sur la journée entière (vacances, sorties, périodes d'examens) ne sont plus ignorées
+- Les horaires sont lus correctement quel que soit le format de l'agenda
+- Les types de séance sont reconnus dans plus de langues, et la légende reprend le vocabulaire de votre établissement

@@ -18,14 +18,14 @@ RepoType: git
 Repo: https://github.com/Androtim/Timetable.git
 
 Builds:
-  - versionName: 1.1.0
-    versionCode: 2
-    commit: v1.1.0
+  - versionName: 1.1.1
+    versionCode: 3
+    commit: v1.1.1
     subdir: app
     gradle:
       - yes
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.1.0
-CurrentVersionCode: 2
+CurrentVersion: 1.1.1
+CurrentVersionCode: 3
