@@ -1,0 +1,5 @@
+Corrections issues des tests sur de vrais emplois du temps.
+
+- Le code du cours ne défile plus hors de l'écran dans les titres
+- Changer d'agenda ne conserve plus les groupes de l'établissement précédent
+- Au premier lancement, un emploi du temps de démonstration permet d'essayer l'application sans lien à soi

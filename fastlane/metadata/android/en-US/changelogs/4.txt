@@ -1,0 +1,5 @@
+Fixes from testing on real timetables.
+
+- Class titles no longer scroll their course code out of view
+- Switching to a different calendar no longer keeps your old school's groups selected
+- First launch can now load a demo timetable, so you can try the app before you have your own link

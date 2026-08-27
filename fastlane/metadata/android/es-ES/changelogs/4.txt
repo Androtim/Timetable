@@ -1,0 +1,5 @@
+Correcciones tras probar con horarios reales.
+
+- El código de la asignatura ya no se desplaza fuera de la vista en los títulos
+- Cambiar de calendario ya no mantiene seleccionados los grupos del centro anterior
+- Al abrir por primera vez puedes cargar un horario de demostración y probar la app sin tener tu propio enlace
