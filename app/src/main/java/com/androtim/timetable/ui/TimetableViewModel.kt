@@ -41,8 +41,16 @@ class TimetableViewModel(app: Application) : AndroidViewModel(app) {
     fun setFeedUrl(url: String) {
         val trimmed = url.trim()
         if (trimmed.isEmpty()) return
+        val changed = settings.feedUrl != trimmed
         settings.feedUrl = trimmed
         _feedUrl.value = trimmed
+        // Group tags belong to the feed they came from. Carrying a previous
+        // school's tags over means they are counted but never listed, so they
+        // cannot be unticked, and they keep filtering against the new feed.
+        if (changed) {
+            setSelectedGroups(emptySet())
+            setWidgetGroups(emptySet())
+        }
         SyncWorker.forceRefresh(getApplication())
     }
 

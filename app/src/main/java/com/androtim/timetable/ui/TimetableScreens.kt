@@ -3,7 +3,6 @@ package com.androtim.timetable.ui
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -358,8 +357,8 @@ fun EventCard(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = contentColorFor(isExam),
-                    maxLines = 1,
-                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE),
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
                 )
                 if (event.location.isNotBlank()) {
                     Text(
@@ -375,7 +374,7 @@ fun EventCard(
                         style = MaterialTheme.typography.bodyMedium,
                         color = contentColorFor(isExam).copy(alpha = 0.75f),
                         maxLines = 1,
-                        modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE),
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
                 if (note != null) {
