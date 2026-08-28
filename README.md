@@ -69,6 +69,9 @@ DTSTART:20261119T123000Z        ← always UTC date-time
   must stay portable: explicit accent classes (`[ée]`, `[ôo]`), `\p{L}` boundaries,
   `\b` only next to ASCII letters. The sync worker catches `Throwable` for this reason.
 
+Distribution state — store progress, signing, known gaps — lives in
+[docs/RELEASE-STATUS.md](docs/RELEASE-STATUS.md).
+
 ## Install
 
 Grab the signed APK from the [latest release](https://github.com/Androtim/Timetable/releases/latest)
